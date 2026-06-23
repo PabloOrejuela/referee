@@ -49,26 +49,16 @@ Vagrantfile
 #-------------------------
 # Temporary Files
 #-------------------------
-writable/cache/*
-!writable/cache/index.html
-
-writable/logs/*
-!writable/logs/index.html
-
-writable/session/*
-!writable/session/index.html
-
-writable/uploads/*
-!writable/uploads/index.html
-
-writable/debugbar/*
+writable/
 
 php_errors.log
 
 #-------------------------
 # Product Image Files
 #-------------------------
-public/images/productos
+public/img/usuarios/*
+!public/img/usuarios/index.html
+
 
 #-------------------------
 # User Guide Temp Files
