@@ -1,0 +1,12 @@
+html[data-bs-theme="light"] .app-sidebar .nav-link,
+html[data-bs-theme="light"] .app-sidebar .nav-header {
+    color: #212529 !important;
+}
+
+html[data-bs-theme="light"] .app-sidebar {
+    background-color: #e8e8e9 !important;
+}
+
+html[data-bs-theme="dark"] .app-sidebar {
+    background-color: #3a3a3c !important;
+}

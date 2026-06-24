@@ -1,4 +1,4 @@
-  <link rel="stylesheet" href="<?= site_url(); ?>public/css/header.css">
+<link rel="stylesheet" href="<?= site_url(); ?>public/css/header.css">
   <!--begin::App Wrapper-->
     <div class="app-wrapper">  
       <!--begin::Header-->
@@ -104,7 +104,7 @@
               <?php 
                 echo '<a href="#" class="nav-link dropdown-toggle" data-bs-toggle="dropdown">
                   <img
-                    src="<?= site_url(); ?>adminLTE4/assets/img/user2-160x160.jpg"
+                    src="'.site_url().'adminLTE4/assets/img/user2-160x160.jpg"
                     class="user-image rounded-circle shadow"
                     alt="User Image"
                   />
@@ -114,7 +114,7 @@
                   <!--begin::User Image-->
                   <li class="user-header text-bg-primary">
                     <img
-                      src="<?= site_url(); ?>adminLTE4/assets/img/user2-160x160.jpg"
+                      src="'.site_url().'adminLTE4/assets/img/user2-160x160.jpg"
                       class="rounded-circle shadow"
                       alt="User Image"
                     />
@@ -129,7 +129,7 @@
                     <!--begin::Row-->
                     <div class="row">
                       <div class="col-4 text-center">
-                        <a href="#">Liga favorita</a>
+                        <a href="'.site_url().'">Liga favorita</a>
                       </div>
                     </div>
                     <!--end::Row-->
@@ -154,7 +154,7 @@
       <!--end::Header-->
 
       <!--begin::Sidebar -->
-      <aside class="app-sidebar bg-body-cesped shadow-sm" data-bs-theme="dark">
+      <aside class="app-sidebar bg-body-dark" data-bs-theme="dark">
         <!--begin::Sidebar Brand-->
         <div class="sidebar-brand">
           <a href="<?= site_url(); ?>" class="brand-link">
@@ -170,17 +170,7 @@
 
         <!--begin::Sidebar Wrapper-->
         <div class="sidebar-wrapper">
-          <nav class="mt-2">
-            <!-- Back to preview CTA -->
-            <div class="px-3 pb-2">
-              <a
-                href="../index.html"
-                class="btn btn-sm btn-outline-light w-100 d-flex align-items-center justify-content-center gap-2"
-              >
-                <i class="bi bi-arrow-left" aria-hidden="true"></i>
-                Back to live preview
-              </a>
-            </div>
+          <nav class="nav flex-column mt-2 ">
 
             <!--begin::Sidebar Menu-->
             <ul
@@ -191,64 +181,19 @@
               data-accordion="false"
               id="docs-navigation"
             >
-              <li class="nav-header">START HERE</li>
-              <li class="nav-item">
-                <a href="../docs/introduction.html" class="nav-link">
-                  <i class="nav-icon bi bi-download"></i>
-                  <p>Installation</p>
-                </a>
-              </li>
-              <li class="nav-item">
-                <a href="../docs/getting-started.html" class="nav-link">
-                  <i class="nav-icon bi bi-rocket-takeoff"></i>
-                  <p>Getting Started</p>
-                </a>
-              </li>
 
-              <li class="nav-header">FOUNDATIONS</li>
+            <h5 class="nav-header">Menú</h5>
               <li class="nav-item">
-                <a href="../docs/layout.html" class="nav-link active">
-                  <i class="nav-icon bi bi-grip-horizontal"></i>
-                  <p>Layout Classes</p>
-                </a>
-              </li>
-              <li class="nav-item">
-                <a href="../docs/layout-blueprint.html" class="nav-link">
-                  <i class="nav-icon bi bi-diagram-3"></i>
-                  <p>Layout Blueprint</p>
-                </a>
-              </li>
-              <li class="nav-item">
-                <a href="../docs/customization.html" class="nav-link">
-                  <i class="nav-icon bi bi-palette"></i>
-                  <p>Customization</p>
-                </a>
-              </li>
-              <li class="nav-item">
-                <a href="../docs/color-mode.html" class="nav-link">
-                  <i class="nav-icon bi bi-star-half"></i>
-                  <p>Color Mode</p>
-                </a>
-              </li>
-              <li class="nav-item">
-                <a href="../docs/rtl.html" class="nav-link">
-                  <i class="nav-icon bi bi-text-paragraph"></i>
-                  <p>RTL Support</p>
-                </a>
-              </li>
-
-              <li class="nav-header">BUILDING</li>
-              <li class="nav-item">
-                <a href="../docs/recipes.html" class="nav-link">
-                  <i class="nav-icon bi bi-clipboard-check"></i>
-                  <p>Recipes</p>
+                <a href="<?= site_url(); ?>campeonatos" class="nav-link">
+                  <i class="nav-icon bi bi-trophy"></i>
+                  <p>Campeonatos</p>
                 </a>
               </li>
               <li class="nav-item">
                 <a href="#" class="nav-link">
-                  <i class="nav-icon bi bi-ui-checks-grid"></i>
+                  <i class="nav-icon bi bi-person-badge"></i>
                   <p>
-                    Components
+                    Equipos
                     <i class="nav-arrow bi bi-chevron-right"></i>
                   </p>
                 </a>
@@ -256,135 +201,79 @@
                   <li class="nav-item">
                     <a href="../docs/components/main-header.html" class="nav-link">
                       <i class="nav-icon bi bi-circle"></i>
-                      <p>Main Header</p>
+                      <p>Ver equipos</p>
                     </a>
                   </li>
                   <li class="nav-item">
                     <a href="../docs/components/main-sidebar.html" class="nav-link">
                       <i class="nav-icon bi bi-circle"></i>
-                      <p>Main Sidebar</p>
+                      <p>Registrar un eqiupo</p>
+                    </a>
+                  </li>
+                </ul>
+              </li>
+              <li class="nav-item">
+                <a href="<?= site_url(); ?>jugadores" class="nav-link">
+                  <i class="nav-icon bi bi-person-vcard"></i>
+                  <p>
+                    Jugadores
+                    <i class="nav-arrow bi bi-chevron-right"></i>
+                  </p>
+                </a>
+                <ul class="nav nav-treeview">
+                  <li class="nav-item">
+                    <a href="../docs/components/main-header.html" class="nav-link">
+                      <i class="nav-icon bi bi-circle"></i>
+                      <p>Lista de jugadores</p>
+                    </a>
+                  </li>
+                  <li class="nav-item">
+                    <a href="../docs/components/main-sidebar.html" class="nav-link">
+                      <i class="nav-icon bi bi-circle"></i>
+                      <p>Registrar un eqiupo</p>
                     </a>
                   </li>
                 </ul>
               </li>
               <li class="nav-item">
                 <a href="#" class="nav-link">
-                  <i class="nav-icon bi bi-filetype-js"></i>
+                  <i class="nav-icon bi bi-people"></i>
                   <p>
-                    JavaScript Plugins
+                    Arbitros
                     <i class="nav-arrow bi bi-chevron-right"></i>
                   </p>
                 </a>
                 <ul class="nav nav-treeview">
                   <li class="nav-item">
-                    <a href="../docs/javascript/plugins-overview.html" class="nav-link">
+                    <a href="../docs/components/main-header.html" class="nav-link">
                       <i class="nav-icon bi bi-circle"></i>
-                      <p>Overview</p>
+                      <p>Ver información de un árbitro</p>
                     </a>
                   </li>
                   <li class="nav-item">
-                    <a href="../docs/javascript/layout.html" class="nav-link">
+                    <a href="../docs/components/main-sidebar.html" class="nav-link">
                       <i class="nav-icon bi bi-circle"></i>
-                      <p>Layout</p>
-                    </a>
-                  </li>
-                  <li class="nav-item">
-                    <a href="../docs/javascript/pushmenu.html" class="nav-link">
-                      <i class="nav-icon bi bi-circle"></i>
-                      <p>PushMenu</p>
-                    </a>
-                  </li>
-                  <li class="nav-item">
-                    <a href="../docs/javascript/treeview.html" class="nav-link">
-                      <i class="nav-icon bi bi-circle"></i>
-                      <p>Treeview</p>
-                    </a>
-                  </li>
-                  <li class="nav-item">
-                    <a href="../docs/javascript/card-widget.html" class="nav-link">
-                      <i class="nav-icon bi bi-circle"></i>
-                      <p>Card Widget</p>
-                    </a>
-                  </li>
-                  <li class="nav-item">
-                    <a href="../docs/javascript/direct-chat.html" class="nav-link">
-                      <i class="nav-icon bi bi-circle"></i>
-                      <p>Direct Chat</p>
-                    </a>
-                  </li>
-                  <li class="nav-item">
-                    <a href="../docs/javascript/fullscreen.html" class="nav-link">
-                      <i class="nav-icon bi bi-circle"></i>
-                      <p>Fullscreen</p>
-                    </a>
-                  </li>
-                  <li class="nav-item">
-                    <a href="../docs/javascript/accessibility.html" class="nav-link">
-                      <i class="nav-icon bi bi-circle"></i>
-                      <p>Accessibility</p>
+                      <p>Registrar un árbitro</p>
                     </a>
                   </li>
                 </ul>
               </li>
               <li class="nav-item">
-                <a href="../docs/integrations.html" class="nav-link">
-                  <i class="nav-icon bi bi-puzzle"></i>
-                  <p>Integrations</p>
-                </a>
-              </li>
-
-              <li class="nav-header">SHIPPING</li>
-              <li class="nav-item">
-                <a href="../docs/migration.html" class="nav-link">
-                  <i class="nav-icon bi bi-arrow-up-right-square"></i>
-                  <p>Migration from v3</p>
-                </a>
-              </li>
-              <li class="nav-item">
-                <a href="../docs/deployment.html" class="nav-link">
-                  <i class="nav-icon bi bi-cloud-upload"></i>
-                  <p>Deployment</p>
-                </a>
-              </li>
-              <li class="nav-item">
-                <a href="../docs/browser-support.html" class="nav-link">
-                  <i class="nav-icon bi bi-browser-chrome"></i>
-                  <p>Browser Support</p>
-                </a>
-              </li>
-
-              <li class="nav-header">RESOURCES</li>
-              <li class="nav-item">
-                <a href="../docs/faq.html" class="nav-link">
-                  <i class="nav-icon bi bi-question-circle"></i>
-                  <p>FAQ</p>
-                </a>
-              </li>
-              <li class="nav-item">
-                <a href="../docs/how-to-contribute.html" class="nav-link">
-                  <i class="nav-icon bi bi-people"></i>
-                  <p>Contributing</p>
-                </a>
-              </li>
-              <li class="nav-item">
-                <a href="../docs/license.html" class="nav-link">
-                  <i class="nav-icon bi bi-patch-check"></i>
-                  <p>License</p>
-                </a>
-              </li>
-              <li class="nav-item">
-                <a
-                  href="https://github.com/ColorlibHQ/AdminLTE"
-                  target="_blank"
-                  rel="noopener"
-                  class="nav-link"
-                >
-                  <i class="nav-icon bi bi-github"></i>
+                <a href="#" class="nav-link">
+                  <i class="nav-icon bi bi-list"></i>
                   <p>
-                    GitHub
-                    <i class="bi bi-box-arrow-up-right ms-1" aria-hidden="true"></i>
+                    Reportes
+                    <i class="nav-arrow bi bi-chevron-right"></i>
                   </p>
                 </a>
+                <ul class="nav nav-treeview">
+                  <li class="nav-item">
+                    <a href="../docs/components/main-header.html" class="nav-link">
+                      <i class="nav-icon bi bi-circle"></i>
+                      <p>Ingresar informes de vocalía</p>
+                    </a>
+                  </li>
+                </ul>
               </li>
             </ul>
             <!--end::Sidebar Menu-->
@@ -393,3 +282,4 @@
         <!--end::Sidebar Wrapper-->
       </aside>
       <!--end::Sidebar (docs mode)--> 
+        

@@ -61,6 +61,9 @@
     <!--begin::Required Plugin(AdminLTE)-->
     <link rel="stylesheet" href="<?= base_url('adminLTE4/css/adminlte.css'); ?>" />
     <!--end::Required Plugin(AdminLTE)-->
+
+    <!-- Custom CSS -->
+    <link rel="stylesheet" href="<?= site_url(); ?>public/css/custom.css">
   </head>
   <!--end::Head-->
   <!--begin::Body-->

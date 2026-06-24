@@ -2,3 +2,11 @@
     width: 100%;
     padding: 0px !important;
 }
+
+.bg-body-light{
+    background-color: rgb(32, 46, 19);
+}
+
+.sidebar-wrapper .nav-sidebar .nav-link {
+    color: #212529 !important;
+}
