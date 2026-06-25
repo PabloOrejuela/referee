@@ -193,19 +193,42 @@
                 <a href="#" class="nav-link">
                   <i class="nav-icon bi bi-person-badge"></i>
                   <p>
+                    Ligas
+                    <i class="nav-arrow bi bi-chevron-right"></i>
+                  </p>
+                </a>
+                <ul class="nav nav-treeview">
+                  <li class="nav-item">
+                    <a href="<?= site_url(); ?>ligas" class="nav-link">
+                      <i class="nav-icon bi bi-circle"></i>
+                      <p>Ver ligas</p>
+                    </a>
+                  </li>
+                  <li class="nav-item">
+                    <a href="<?= site_url(); ?>form-nueva-liga" class="nav-link">
+                      <i class="nav-icon bi bi-circle"></i>
+                      <p>Registrar una liga</p>
+                    </a>
+                  </li>
+                </ul>
+              </li>
+              <li class="nav-item">
+                <a href="#" class="nav-link">
+                  <i class="nav-icon bi bi-person-badge"></i>
+                  <p>
                     Equipos
                     <i class="nav-arrow bi bi-chevron-right"></i>
                   </p>
                 </a>
                 <ul class="nav nav-treeview">
                   <li class="nav-item">
-                    <a href="../docs/components/main-header.html" class="nav-link">
+                    <a href="<?= site_url(); ?>equipos" class="nav-link">
                       <i class="nav-icon bi bi-circle"></i>
                       <p>Ver equipos</p>
                     </a>
                   </li>
                   <li class="nav-item">
-                    <a href="../docs/components/main-sidebar.html" class="nav-link">
+                    <a href="<?= site_url(); ?>form-nuevo-equipo" class="nav-link">
                       <i class="nav-icon bi bi-circle"></i>
                       <p>Registrar un eqiupo</p>
                     </a>
@@ -213,7 +236,7 @@
                 </ul>
               </li>
               <li class="nav-item">
-                <a href="<?= site_url(); ?>jugadores" class="nav-link">
+                <a href="#" class="nav-link">
                   <i class="nav-icon bi bi-person-vcard"></i>
                   <p>
                     Jugadores
@@ -222,15 +245,15 @@
                 </a>
                 <ul class="nav nav-treeview">
                   <li class="nav-item">
-                    <a href="../docs/components/main-header.html" class="nav-link">
+                    <a href="<?= site_url(); ?>jugadores" class="nav-link">
                       <i class="nav-icon bi bi-circle"></i>
                       <p>Lista de jugadores</p>
                     </a>
                   </li>
                   <li class="nav-item">
-                    <a href="../docs/components/main-sidebar.html" class="nav-link">
+                    <a href="<?= site_url(); ?>form-nuevo-jugador" class="nav-link">
                       <i class="nav-icon bi bi-circle"></i>
-                      <p>Registrar un eqiupo</p>
+                      <p>Registrar un jugador</p>
                     </a>
                   </li>
                 </ul>
@@ -245,13 +268,13 @@
                 </a>
                 <ul class="nav nav-treeview">
                   <li class="nav-item">
-                    <a href="../docs/components/main-header.html" class="nav-link">
+                    <a href="<?= site_url(); ?>arbitros" class="nav-link">
                       <i class="nav-icon bi bi-circle"></i>
                       <p>Ver información de un árbitro</p>
                     </a>
                   </li>
                   <li class="nav-item">
-                    <a href="../docs/components/main-sidebar.html" class="nav-link">
+                    <a href="<?= site_url(); ?>form-nuevo-arbitro" class="nav-link">
                       <i class="nav-icon bi bi-circle"></i>
                       <p>Registrar un árbitro</p>
                     </a>
@@ -268,7 +291,7 @@
                 </a>
                 <ul class="nav nav-treeview">
                   <li class="nav-item">
-                    <a href="../docs/components/main-header.html" class="nav-link">
+                    <a href="<?= site_url(); ?>vocalias" class="nav-link">
                       <i class="nav-icon bi bi-circle"></i>
                       <p>Ingresar informes de vocalía</p>
                     </a>

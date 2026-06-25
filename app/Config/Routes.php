@@ -9,7 +9,13 @@ $routes->post('validate-login', 'Inicio::validateLogin');
 $routes->get('logout', 'Inicio::logout');
 
 //Torneos
-$routes->get('torneos', 'Torneos::index');
+$routes->get('campeonatos', 'Campeonatos::index');
+
+//Ligas
+$routes->get('ligas', 'Ligas::index');
+$routes->get('form-nueva-liga', 'Ligas::formNuevaLiga');
+$routes->post('insert-liga', 'Ligas::insertLiga');
+
 
 // Equipos (requiere permiso 'equipo')
 $routes->get('equipos', 'Equipos::index', ['filter' => 'auth:equipo']);
@@ -20,6 +26,10 @@ $routes->get('arbitros', 'Arbitros::index', ['filter' => 'auth:arbitraje']);
 // Reportes (requiere permiso 'informes')
 $routes->get('reportes', 'Reportes::index', ['filter' => 'auth:informes']);
 
-$routes->group('', ['filter' => 'auth'], static function($routes) {
-    $routes->get('nuevo-jugador', 'Jugadores::formNuevoJugador');
-});
+//Jugadores
+$routes->get('jugadores', 'Jugadores::index');
+$routes->get('form-nuevo-jugador', 'Jugadores::formNuevoJugador');
+
+// $routes->group('', ['filter' => 'auth'], static function($routes) {
+//     $routes->get('nuevo-jugador', 'Jugadores::formNuevoJugador');
+// });
