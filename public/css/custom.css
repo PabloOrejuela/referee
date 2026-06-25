@@ -10,7 +10,3 @@ html[data-bs-theme="light"] .app-sidebar {
 html[data-bs-theme="dark"] .app-sidebar {
     background-color: #3a3a3c !important;
 }
-
-/* .app-wrapper {
-    display: block !important;
-} */

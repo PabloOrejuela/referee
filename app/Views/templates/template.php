@@ -2,6 +2,6 @@
     echo
       view('templates/head') 
       .view('templates/header')
-        //.view('includes/botonera')
+        .view('templates/sidemenu')
         .view($main_content)
         .view('templates/footer');

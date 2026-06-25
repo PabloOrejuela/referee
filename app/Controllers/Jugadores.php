@@ -15,7 +15,7 @@ class Jugadores extends BaseController {
 
         $data['provincias'] = $this->provinciaModel->findAll();
         
-        $data['title'] = 'Usuarios';
+        $data['title'] = 'Jugadores';
         $data['main_content'] = 'jugadores/form_nuevo_jugador';
         return view('dashboard/index', $data);
     }
