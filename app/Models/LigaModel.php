@@ -12,7 +12,7 @@ class LigaModel extends Model {
     protected $returnType       = 'object';
     protected $useSoftDeletes   = false;
     protected $protectFields    = true;
-    protected $allowedFields    = ['nombre_liga','img_logo','idcategoria'];
+    protected $allowedFields    = ['nombre_liga','img_logo','idcategoria','idprovincia'];
 
     protected bool $allowEmptyInserts = false;
     protected bool $updateOnlyChanged = true;

@@ -15,6 +15,21 @@ class Ligas extends BaseController {
         return view('dashboard/index', $data);
     }
 
+    public function getLigasByProvincia($idprovincia = null){
+        if (empty($idprovincia) || !is_numeric($idprovincia)) {
+            return $this->response->setJSON([]);
+        }
+
+        $ligas = $this->ligaModel
+            ->select('ligas.id, ligas.nombre_liga, ligas.img_logo, ligas.idcategoria, ligas.idprovincia, provincias.provincia')
+            ->join('provincias', 'provincias.id = ligas.idprovincia', 'left')
+            ->where('ligas.idprovincia', $idprovincia)
+            ->orderBy('ligas.nombre_liga', 'ASC')
+            ->findAll();
+
+        return $this->response->setJSON($ligas);
+    }
+
     public function formNuevaLiga(){
         $data['categorias'] = $this->categoriaModel->findAll();
         

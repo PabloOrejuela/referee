@@ -28,7 +28,6 @@
     <!--begin::Accessibility Features-->
     <!-- Skip links will be dynamically added by accessibility.js -->
     <meta name="supported-color-schemes" content="light dark" />
-    <link rel="preload" href="<?= base_url('adminLTE4/css/adminlte.css'); ?>" as="style" />
     <!--end::Accessibility Features-->
 
     <!--begin::Fonts-->

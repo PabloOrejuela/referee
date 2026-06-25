@@ -2,8 +2,7 @@
 
 <h3>Cambios</h3>
 <ul>
-    <li>Se ha creado el helper de optimizar imagenes</li>
-    <li>Implementada la funcionalidad de registrar una nueva liga</li>
+    <li>Antes de probar el cambio de dashboard</li>
 </ul>
 
 <h3>Fixes</h3>

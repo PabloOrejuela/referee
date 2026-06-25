@@ -35,7 +35,7 @@
         <div class="container-fluid">
             <div class="row row-cols-1 row-cols-sm-2 row-cols-lg-3 g-4" id="torneosGrid">
                 <div class="col">
-                    <div class="card liga-card h-100 shadow-sm border-0">
+                    <!-- <div class="card liga-card h-100 shadow-sm border-0">
                         <div class="liga-card-header text-white d-flex align-items-center px-4">
                             <div class="liga-title flex-grow-1">Afap Formativas</div>
                             <span class="liga-flag"></span>
@@ -55,9 +55,10 @@
                                 <i class="bi bi-star me-2"></i>Escoger como torneo favorito
                             </a>
                         </div>
-                    </div>
+                    </div> -->
                 </div>
             </div>
         </div>
     </div>
 </section>
+<script src="<?= site_url(); ?>public/js/grid_ligas.js"></script>

@@ -13,6 +13,7 @@ $routes->get('campeonatos', 'Campeonatos::index');
 
 //Ligas
 $routes->get('ligas', 'Ligas::index');
+$routes->get('ligas/provincia/(:num)', 'Ligas::getLigasByProvincia/$1');
 $routes->get('form-nueva-liga', 'Ligas::formNuevaLiga');
 $routes->post('insert-liga', 'Ligas::insertLiga');
 
