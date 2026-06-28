@@ -32,7 +32,7 @@
                             <h5 class="fw-bold">Bienvenido !</h5>
                             
                             <div class="text-center">
-                                <img src="<?= site_url() ?>public/img/logo-grande.png" alt="logo" id="logo-grande">
+                                <img src="<?= site_url() ?>public/img/logo-grande.png" alt="logo" id="logo-grande1">
                             </div>
                             <h4>Sobre la app</h4>
                             <p>
