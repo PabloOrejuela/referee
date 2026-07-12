@@ -1,4 +1,4 @@
-<link rel="stylesheet" href="<?= site_url(); ?>public/css/grid-jugadores.css">
+<link rel="stylesheet" href="<?= site_url(); ?>public/css/grid-usuarios.css">
 <!-- Main content -->
 <section class="content">
       <div class="container-fluid">
@@ -8,7 +8,7 @@
                 <div class="card">
                     <div class="card-body">
                         <div>
-                            <a type="button" href="<?= site_url().'form-nuevo-jugador'; ?>"  class="btn btn-success mb-2" >Registrar un nuevo jugador</a>
+                            <a type="button" href="<?= site_url().'form-nuevo-usuario'; ?>"  class="btn btn-success mb-2" >Registrar un nuevo usuario</a>
                         </div>
                         <form action="#" method="post">
                         <table id="datatablesSimple" class="table table-bordered table-striped">
@@ -17,44 +17,39 @@
                                 <th>Usuario</th>
                                 <th>Documento</th>
                                 <th>Teléfono</th>
-                                <th>Equipo</th>
-                                <th>Pierna Hábil</th>
-                                <th>Posición</th>
-                                <th>Estatura</th>
-                                <th>Peso</th>
+                                <th>Dirección</th>
+                                <th>Email</th>
+                                <th>Rol</th>
+                                <th>Estado</th>
                                 <th></th>
                                 <th></th>
                             </thead>
                             <tbody>
                                 <?php
-                                    if (isset($jugadores) && $jugadores != NULL) {
-                                        foreach ($jugadores as $key => $jugador) {
+                                    if (isset($usuarios) && $usuarios != NULL) {
+                                        foreach ($usuarios as $key => $usuario) {
                                             echo '<tr>
-                                                <td><a href="'.site_url().'cliente-edit/'.$jugador->id.'" id="link-editar">'.$jugador->nombre.' '.$jugador->apellido.'</a></td>
-                                                <td>'.$jugador->documento.'</td>
-                                                <td>'.$jugador->telf_1.'</td>
-                                                <td>'.$jugador->telf_1.'</td>';
-                                                if ($jugador->pierna_habil == 1) {
-                                                    echo '<td>IZQUIERDA</td>';
-                                                }else if($jugador->pierna_habil == 2){
-                                                    echo '<td>DERECHA</td>';
-                                                }else{
-                                                    echo '<td>Ambas</td>';
+                                                <td><a href="'.site_url().'cliente-edit/'.$usuario->id.'" id="link-editar">'.$usuario->nombre.' '.$usuario->apellido.'</a></td>
+                                                <td>'.$usuario->documento.'</td>
+                                                <td>'.$usuario->telf_1.'</td>
+                                                <td>'.$usuario->direccion.'</td>
+                                                <td>'.$usuario->email.'</td>
+                                                <td>'.$usuario->idrol.'</td>';
+                                                if ($usuario->estado == 1) {
+                                                    echo '<td>Activo</td>';
+                                                }else if($usuario->estado == 0){
+                                                    echo '<td>Inactivo</td>';
                                                 }
-
-                                                echo '<td>'.$jugador->posicion.'</td>
-                                                <td>'.$jugador->altura.' cm</td>
-                                                <td>'.$jugador->peso.' kg</td>';
                                             echo '<td>
                                                 <div class="contenedor">
-                                                    <a type="button" id="btn-register" href="'.site_url().'print-client-historial/'.$jugador->id.'" class="btnAction">
+                                                    <a type="button" id="btn-register" href="'.site_url().'print-client-historial/'.$usuario->id.'" class="btnAction">
                                                         <img src="'.site_url().'public/img/btn-print.png" width="30" >
                                                     </a>
                                                 </div>
                                             </td>
                                             <td>
                                                 <div class="contenedor">
-                                                    <a type="button" id="btn-register" href="'.site_url().'cliente-delete/'.$jugador->id.'" class="btnAction">
+                                                    <a type="button" id="btn-register" href="'.site_url().'cliente-delete/'.$usuario->id.'" class="btnAction">
                                                         <img src="'.site_url().'public/img/delete.png" width="30" >
                                                     </a>
                                                 </div>

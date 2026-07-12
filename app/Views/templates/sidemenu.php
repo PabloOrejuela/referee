@@ -23,11 +23,34 @@
               data-lte-toggle="treeview"
               role="navigation"
               aria-label="Documentation navigation"
-              data-accordion="false"
+              data-accordion="true"
               id="docs-navigation"
             >
 
             <h5 class="nav-header">Menú</h5>
+            <li class="nav-item">
+                <a href="#" class="nav-link">
+                  <i class="nav-icon bi bi-person-badge"></i>
+                  <p>
+                    Administración
+                    <i class="nav-arrow bi bi-chevron-right"></i>
+                  </p>
+                </a>
+                <ul class="nav nav-treeview">
+                  <li class="nav-item">
+                    <a href="<?= site_url(); ?>usuarios" class="nav-link">
+                      <i class="nav-icon bi bi-circle"></i>
+                      <p>Usuarios</p>
+                    </a>
+                  </li>
+                  <li class="nav-item">
+                    <a href="<?= site_url(); ?>form-nuevo-usuario" class="nav-link">
+                      <i class="nav-icon bi bi-circle"></i>
+                      <p>Registrar un usuario</p>
+                    </a>
+                  </li>
+                </ul>
+              </li>
               <li class="nav-item">
                 <a href="<?= site_url(); ?>campeonatos" class="nav-link">
                   <i class="nav-icon bi bi-trophy"></i>
@@ -53,6 +76,18 @@
                     <a href="<?= site_url(); ?>form-nueva-liga" class="nav-link">
                       <i class="nav-icon bi bi-circle"></i>
                       <p>Registrar una liga</p>
+                    </a>
+                  </li>
+                  <li class="nav-item">
+                    <a href="<?= site_url(); ?>form-nueva-liga" class="nav-link">
+                      <i class="nav-icon bi bi-circle"></i>
+                      <p>Registrar ingresos/gastos</p>
+                    </a>
+                  </li>
+                  <li class="nav-item">
+                    <a href="<?= site_url(); ?>form-nueva-liga" class="nav-link">
+                      <i class="nav-icon bi bi-circle"></i>
+                      <p>Informe financiero</p>
                     </a>
                   </li>
                 </ul>
@@ -115,13 +150,19 @@
                   <li class="nav-item">
                     <a href="<?= site_url(); ?>arbitros" class="nav-link">
                       <i class="nav-icon bi bi-circle"></i>
-                      <p>Ver información de un árbitro</p>
+                      <p>Lista de Arbitros</p>
                     </a>
                   </li>
                   <li class="nav-item">
                     <a href="<?= site_url(); ?>form-nuevo-arbitro" class="nav-link">
                       <i class="nav-icon bi bi-circle"></i>
                       <p>Registrar un árbitro</p>
+                    </a>
+                  </li>
+                  <li class="nav-item">
+                    <a href="<?= site_url(); ?>form-califica-arbitro" class="nav-link">
+                      <i class="nav-icon bi bi-circle"></i>
+                      <p>Calificar árbitro</p>
                     </a>
                   </li>
                 </ul>
@@ -138,7 +179,7 @@
                   <li class="nav-item">
                     <a href="<?= site_url(); ?>vocalias" class="nav-link">
                       <i class="nav-icon bi bi-circle"></i>
-                      <p>Ingresar informes de vocalía</p>
+                      <p>Informes de vocalía</p>
                     </a>
                   </li>
                 </ul>

@@ -33,6 +33,11 @@
     <!--end::Required Plugin(Bootstrap 5)--><!--begin::Required Plugin(AdminLTE)-->
     <script src="<?= site_url(); ?>adminLTE4/js/adminlte.js"></script>
     <!--end::Required Plugin(AdminLTE)--><!--begin::OverlayScrollbars Configure-->
+
+    <!-- DATATABLES -->
+    <script src="https://cdn.datatables.net/v/bs5/dt-2.3.8/datatables.min.js" integrity="sha384-M6UGhVy7VWBGzDEGllTBBFgXu43d6sWM07qFvlFrfOr/R3GhL8TLsG0iwMzJuX3N" crossorigin="anonymous"></script>
+
+
     <script>
       const SELECTOR_SIDEBAR_WRAPPER = '.sidebar-wrapper';
       const Default = {

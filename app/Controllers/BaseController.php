@@ -7,6 +7,7 @@ use CodeIgniter\HTTP\RequestInterface;
 use CodeIgniter\HTTP\ResponseInterface;
 use Psr\Log\LoggerInterface;
 
+use App\Models\ArbitroModel;
 use App\Models\CampeonatoModel;
 use App\Models\CategoriaModel;
 use App\Models\CiudadModel;
@@ -61,6 +62,7 @@ abstract class BaseController extends Controller {
 
         // Preload any models, libraries, etc, here.
         $this->db = \Config\Database::connect();
+        $this->arbitroModel = new ArbitroModel($this->db);
         $this->campeonatoModel = new CampeonatoModel($this->db);
         $this->categoriaModel = new CategoriaModel($this->db);
         $this->ciudadModel = new CiudadModel($this->db);

@@ -23,7 +23,7 @@
                 <div class="col-12">
                     <div class="card shadow-sm mb-4">
                         <div class="card-header bg-success text-white">
-                            <h5 class="mb-0">Registrar nuevo jugador</h5>
+                            <h5 class="mb-0">Registrar nuevo usuario</h5>
                         </div>
                         <div class="card-body">
 
@@ -108,43 +108,10 @@
                                         </div>
                                     </div>
 
-                                    <div class="col-12 mt-4">
-                                        <h6 class="mb-3">Datos del jugador</h6>
-                                    </div>
-
-                                    <div class="col-md-6">
-                                        <label for="idusuario" class="form-label">ID de usuario</label>
-                                        <input type="number" class="form-control" id="idusuario" name="idusuario" value="<?= old('idusuario') ?>" placeholder="ID del usuario relacionado" min="1">
-                                    </div>
-
-                                    <div class="col-md-6">
-                                        <label for="pierna_habil" class="form-label">Pierna hábil</label>
-                                        <select id="pierna_habil" name="pierna_habil" class="form-select">
-                                            <option value="">Seleccione una opción</option>
-                                            <option value="Derecha" <?= old('pierna_habil') === 'Derecha' ? 'selected' : '' ?>>Derecha</option>
-                                            <option value="Izquierda" <?= old('pierna_habil') === 'Izquierda' ? 'selected' : '' ?>>Izquierda</option>
-                                            <option value="Ambas" <?= old('pierna_habil') === 'Ambas' ? 'selected' : '' ?>>Ambas</option>
-                                        </select>
-                                    </div>
-
-                                    <div class="col-md-6">
-                                        <label for="posicion" class="form-label">Posición</label>
-                                        <input type="text" class="form-control" id="posicion" name="posicion" value="<?= old('posicion') ?>" placeholder="Ej. Mediocampista">
-                                    </div>
-
-                                    <div class="col-md-3">
-                                        <label for="altura" class="form-label">Altura (m)</label>
-                                        <input type="number" step="0.01" class="form-control" id="altura" name="altura" value="<?= old('altura') ?>" placeholder="1.80">
-                                    </div>
-
-                                    <div class="col-md-3">
-                                        <label for="peso" class="form-label">Peso (kg)</label>
-                                        <input type="number" step="0.1" class="form-control" id="peso" name="peso" value="<?= old('peso') ?>" placeholder="75.0">
-                                    </div>
 
                                     <div class="col-12 mt-4">
                                         <button type="submit" class="btn btn-primary">Guardar</button>
-                                        <a href="<?= site_url() ?>jugadores" class="btn btn-secondary ms-2">Cancelar</a>
+                                        <a href="<?= site_url() ?>" class="btn btn-secondary ms-2">Cancelar</a>
                                     </div>
                                 </div>
                             </form>

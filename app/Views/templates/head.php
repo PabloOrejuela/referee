@@ -63,6 +63,10 @@
 
     <!-- Custom CSS -->
     <link rel="stylesheet" href="<?= site_url(); ?>public/css/custom.css">
+
+    <!-- DATATABLES -->
+    <link href="https://cdn.datatables.net/v/bs5/dt-2.3.8/datatables.min.css" rel="stylesheet" integrity="sha384-UclYA0TM50oo4lzbw9CylacalWmOxu+RipNT22BDrqDD9v2F0M+262NAs03TOfhw" crossorigin="anonymous">
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js" integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4=" crossorigin="anonymous"></script>
   </head>
   <!--end::Head-->
   <!--begin::Body-->

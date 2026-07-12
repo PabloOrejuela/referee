@@ -8,7 +8,7 @@
                 <div class="card">
                     <div class="card-body">
                         <div>
-                            <a type="button" href="<?= site_url().'form-nuevo-jugador'; ?>"  class="btn btn-success mb-2" >Registrar un nuevo jugador</a>
+                            <a type="button" href="<?= site_url().'form-nuevo-arbitro'; ?>"  class="btn btn-success mb-2" >Registrar un nuevo arbitro</a>
                         </div>
                         <form action="#" method="post">
                         <table id="datatablesSimple" class="table table-bordered table-striped">
@@ -17,34 +17,20 @@
                                 <th>Usuario</th>
                                 <th>Documento</th>
                                 <th>Teléfono</th>
-                                <th>Equipo</th>
-                                <th>Pierna Hábil</th>
-                                <th>Posición</th>
-                                <th>Estatura</th>
-                                <th>Peso</th>
+                                <th>Calificacion</th>
                                 <th></th>
                                 <th></th>
                             </thead>
                             <tbody>
                                 <?php
-                                    if (isset($jugadores) && $jugadores != NULL) {
-                                        foreach ($jugadores as $key => $jugador) {
+                                    if (isset($arbitros) && $arbitros != NULL) {
+                                        foreach ($arbitros as $key => $jugador) {
                                             echo '<tr>
                                                 <td><a href="'.site_url().'cliente-edit/'.$jugador->id.'" id="link-editar">'.$jugador->nombre.' '.$jugador->apellido.'</a></td>
                                                 <td>'.$jugador->documento.'</td>
                                                 <td>'.$jugador->telf_1.'</td>
-                                                <td>'.$jugador->telf_1.'</td>';
-                                                if ($jugador->pierna_habil == 1) {
-                                                    echo '<td>IZQUIERDA</td>';
-                                                }else if($jugador->pierna_habil == 2){
-                                                    echo '<td>DERECHA</td>';
-                                                }else{
-                                                    echo '<td>Ambas</td>';
-                                                }
+                                                <td>'.$jugador->calificacion.' puntos</td>';
 
-                                                echo '<td>'.$jugador->posicion.'</td>
-                                                <td>'.$jugador->altura.' cm</td>
-                                                <td>'.$jugador->peso.' kg</td>';
                                             echo '<td>
                                                 <div class="contenedor">
                                                     <a type="button" id="btn-register" href="'.site_url().'print-client-historial/'.$jugador->id.'" class="btnAction">

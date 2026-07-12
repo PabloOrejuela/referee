@@ -11,6 +11,14 @@ $routes->get('logout', 'Inicio::logout');
 //Torneos
 $routes->get('campeonatos', 'Campeonatos::index');
 
+//Usuarios
+$routes->get('usuarios', 'Usuarios::index');
+$routes->get('form-nuevo-usuario', 'Usuarios::formNuevoUsuario');
+
+//Arbitros
+$routes->get('arbitros', 'Arbitros::index');
+$routes->get('form-nuevo-arbitro', 'Arbitros::formNuevoArbitro');
+
 //Ligas
 $routes->get('ligas', 'Ligas::index');
 $routes->get('ligas/provincia/(:num)', 'Ligas::getLigasByProvincia/$1');
