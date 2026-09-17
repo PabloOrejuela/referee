@@ -1,4 +1,4 @@
-<link rel="stylesheet" href="<?= site_url(); ?>public/css/grid-jugadores.css">
+<link rel="stylesheet" href="<?= site_url(); ?>public/css/grid-equipos.css">
 <!-- Main content -->
 <section class="content">
       <div class="container-fluid">
@@ -8,40 +8,44 @@
                 <div class="card">
                     <div class="card-body">
                         <div>
-                            <a type="button" href="<?= site_url().'form-nuevo-jugador'; ?>"  class="btn btn-success mb-2" >Registrar un nuevo jugador</a>
+                            <a type="button" href="<?= site_url().'form-nuevo-arbitro'; ?>"  class="btn btn-success mb-2" >Registrar un nuevo equipo</a>
                         </div>
                         <form action="#" method="post">
                         <table id="datatablesSimple" class="table table-bordered table-striped">
                             
                             <thead>
-                                <th>Usuario</th>
-                                <th>Documento</th>
+                                <th>Escudo</th>
                                 <th>Equipo</th>
-                                <th>Imagen</th>
+                                <th>Descripción</th>
+                                <th>Fundación</th>
+                                <th>Técnico</th>
+                                <th>Presidente</th>
                                 <th></th>
                                 <th></th>
                             </thead>
                             <tbody>
                                 <?php
-                                    if (isset($jugadores) && $jugadores != NULL) {
-                                        foreach ($jugadores as $key => $jugador) {
+                                    if (isset($equipos) && $equipos != NULL) {
+                                        foreach ($equipos as $key => $equipo) {
                                             echo '<tr>
-                                                <td><a href="'.site_url().'cliente-edit/'.$jugador->id.'" id="link-editar">'.$jugador->nombre.' '.$jugador->apellido.'</a></td>
-                                                <td>'.$jugador->documento.'</td>
-                                                <td>Equipo</td>
-                                                <td>'.$jugador->imagen.'</td>
+                                                <td><img src="'.site_url().'public/img/equipos/'.$equipo->imagen.'" alt="logo" id="logo-thumb"></td>
+                                                <td><a href="'.site_url().'cliente-edit/'.$equipo->id.'" id="link-editar">'.$equipo->nombre.'</a></td>
+                                                <td>'.$equipo->descripcion.'</td>
+                                                <td>'.$equipo->fecha_fundacion.'</td>
+                                                <td>Técnico</td>
+                                                <td>'.$equipo->presidente.'</td>
                                             ';
 
                                             echo '<td>
                                                 <div class="contenedor">
-                                                    <a type="button" id="btn-register" href="'.site_url().'print-client-historial/'.$jugador->id.'" class="btnAction">
+                                                    <a type="button" id="btn-register" href="'.site_url().'print-client-historial/'.$equipo->id.'" class="btnAction">
                                                         <img src="'.site_url().'public/img/btn-print.png" width="30" >
                                                     </a>
                                                 </div>
                                             </td>
                                             <td>
                                                 <div class="contenedor">
-                                                    <a type="button" id="btn-register" href="'.site_url().'cliente-delete/'.$jugador->id.'" class="btnAction">
+                                                    <a type="button" id="btn-register" href="#" class="btnAction">
                                                         <img src="'.site_url().'public/img/delete.png" width="30" >
                                                     </a>
                                                 </div>

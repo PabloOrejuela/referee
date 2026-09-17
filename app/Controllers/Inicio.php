@@ -5,7 +5,19 @@ namespace App\Controllers;
 use App\Controllers\BaseController;
 use CodeIgniter\HTTP\ResponseInterface;
 
+use App\Models\UserModel;
+
 class Inicio extends BaseController {
+
+    protected $userModel;
+
+    public function initController(...$params) {
+        // Esto ejecuta el initController del BaseController (Carga DB, Sesión, ACL, etc.)
+        parent::initController(...$params);
+
+        // Instancias los modelos
+        $this->userModel = model(RolModel::class);
+    }
 
     public function index() {
 

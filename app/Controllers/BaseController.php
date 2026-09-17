@@ -7,23 +7,6 @@ use CodeIgniter\HTTP\RequestInterface;
 use CodeIgniter\HTTP\ResponseInterface;
 use Psr\Log\LoggerInterface;
 
-use App\Models\ArbitroModel;
-use App\Models\CampeonatoModel;
-use App\Models\CategoriaModel;
-use App\Models\CiudadModel;
-use App\Models\EquipoModel;
-use App\Models\JugadorModel;
-use App\Models\LigaModel;
-use App\Models\PaisModel;
-use App\Models\PlantillaModel;
-use App\Models\PresidenteModel;
-use App\Models\ProvinciaModel;
-use App\Models\RolModel;
-use App\Models\TecnicoModel;
-use App\Models\TemporadaModel;
-use App\Models\TipoLigaModel;
-use App\Models\UserModel;
-use App\Models\VocaliaModel;
 
 /**
  * BaseController provides a convenient place for loading components
@@ -46,6 +29,16 @@ abstract class BaseController extends Controller {
     protected $request;
     protected $helpers = ['form', 'url', 'html','image'];
 
+    protected $session;
+    protected $validation;
+    protected $image;
+    protected $db;
+
+    // Solo los modelos globales
+    // protected $sessionModel;
+    // protected $datosEmpresaModel;
+    // protected $datosSistemaModel;
+
     /**
      * @return void
      */
@@ -62,23 +55,9 @@ abstract class BaseController extends Controller {
 
         // Preload any models, libraries, etc, here.
         $this->db = \Config\Database::connect();
-        $this->arbitroModel = new ArbitroModel($this->db);
-        $this->campeonatoModel = new CampeonatoModel($this->db);
-        $this->categoriaModel = new CategoriaModel($this->db);
-        $this->ciudadModel = new CiudadModel($this->db);
-        $this->equipoModel = new EquipoModel($this->db);
-        $this->jugadorModel = new JugadorModel($this->db);
-        $this->ligaModel = new LigaModel($this->db);
-        $this->paisModel = new PaisModel($this->db);
-        $this->plantillaModel = new PlantillaModel($this->db);
-        $this->presidenteModel = new PresidenteModel($this->db);
-        $this->provinciaModel = new ProvinciaModel($this->db);
-        $this->rolModel = new RolModel($this->db);
-        $this->tecnicoModel = new TecnicoModel($this->db);
-        $this->temporadaModel = new TemporadaModel($this->db);
-        $this->tipoLigaModel = new TipoLigaModel($this->db);
-        $this->userModel = new UserModel($this->db);
-        $this->vocaliaModel = new VocaliaModel($this->db);
+
+        //Instanciamos SOLO los modelos globales usando el helper model()
+
         // $this->session = service('session');
 
 

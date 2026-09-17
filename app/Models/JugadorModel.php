@@ -4,15 +4,17 @@ namespace App\Models;
 
 use CodeIgniter\Model;
 
-class JugadorModel extends Model
-{
+class JugadorModel extends Model {
+    
     protected $table            = 'jugadores';
     protected $primaryKey       = 'id';
     protected $useAutoIncrement = true;
     protected $returnType       = 'object';
     protected $useSoftDeletes   = false;
     protected $protectFields    = true;
-    protected $allowedFields    = ['idusuario','pierna_habil','posicion','altura','peso'];
+    protected $allowedFields    = [
+        'nombre','apellido','documento','email','telf','direccion','imagen','fecha_nac','estado','pierna_habil','posicion','altura','peso'
+    ];
 
     protected bool $allowEmptyInserts = false;
     protected bool $updateOnlyChanged = true;

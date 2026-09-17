@@ -43,7 +43,7 @@ document.addEventListener('DOMContentLoaded', function () {
 
             var infoRow = document.createElement('div');
             infoRow.className = 'd-flex align-items-center gap-3 mb-3';
-
+            
             var logoWrapper = document.createElement('div');
             logoWrapper.className = 'liga-logo rounded-3 shadow-sm bg-white d-flex align-items-center justify-content-center';
             logoWrapper.innerHTML = '<span class="liga-logo-text">' + escapeHtml((liga.nombre_liga || '').substring(0, 4).toUpperCase()) + '</span>';

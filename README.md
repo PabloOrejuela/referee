@@ -2,7 +2,7 @@
 
 <h3>Cambios</h3>
 <ul>
-    <li>Se a creado los controladores Arbitro, Campeonatos, Jugadores, Ligas, Usuarios de la api</li>
+    <li>Creado el grid de equipos</li>
 </ul>
 
 <h3>Fixes</h3>

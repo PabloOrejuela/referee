@@ -5,7 +5,26 @@ namespace App\Controllers;
 use App\Controllers\BaseController;
 use CodeIgniter\HTTP\ResponseInterface;
 
+use App\Models\CategoriaModel;
+use App\Models\LigaModel;
+use App\Models\ProvinciaModel;
+
 class Ligas extends BaseController {
+
+
+    // Declaro las propiedades aquí arriba
+    protected $ligaModel;
+
+    //Constructor no abreviado
+    public function initController(\CodeIgniter\HTTP\RequestInterface $request, \CodeIgniter\HTTP\ResponseInterface $response, \Psr\Log\LoggerInterface $logger) {
+        // Esto ejecuta el initController del BaseController (Carga DB, Sesión, ACL, etc.)
+        parent::initController($request, $response, $logger);
+
+        // Instancias tus modelos
+        $this->categoriaModel = model(CategoriaModel::class);
+        $this->ligaModel = model(LigaModel::class);
+        $this->provinciaModel = model(ProvinciaModel::class);
+    }
 
     public function index(){
         $data['provincias'] = $this->provinciaModel->findAll();
@@ -32,6 +51,7 @@ class Ligas extends BaseController {
 
     public function formNuevaLiga(){
         $data['categorias'] = $this->categoriaModel->findAll();
+        $data['provincias'] = $this->provinciaModel->findAll();
         
         $data['title'] = 'Ligas';
         $data['main_content'] = 'ligas/form_nueva_liga';
@@ -73,7 +93,7 @@ class Ligas extends BaseController {
         // Upload de la imágen usando el helper
         $nombreImagen = uploadAndOptimizeImage(
             $imagenLiga,
-            FCPATH . 'public/img/usuarios',
+            FCPATH . 'public/img/ligas',
             800,
             80
         );

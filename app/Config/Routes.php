@@ -27,7 +27,8 @@ $routes->post('insert-liga', 'Ligas::insertLiga');
 
 
 // Equipos (requiere permiso 'equipo')
-$routes->get('equipos', 'Equipos::index', ['filter' => 'auth:equipo']);
+$routes->get('equipos', 'Equipos::equipos');
+//$routes->get('equipos', 'Equipos::index', ['filter' => 'auth:equipo']);
 
 // Arbitros (requiere permiso 'arbitraje')
 $routes->get('arbitros', 'Arbitros::index', ['filter' => 'auth:arbitraje']);
