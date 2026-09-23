@@ -14,10 +14,11 @@
                         <table id="datatablesSimple" class="table table-bordered table-striped">
                             
                             <thead>
-                                <th>Usuario</th>
+                                <th>Imagen</th>
+                                <th>Jugador</th>
+                                <th>Seudónimo</th>
                                 <th>Documento</th>
                                 <th>Equipo</th>
-                                <th>Imagen</th>
                                 <th></th>
                                 <th></th>
                             </thead>
@@ -26,10 +27,11 @@
                                     if (isset($jugadores) && $jugadores != NULL) {
                                         foreach ($jugadores as $key => $jugador) {
                                             echo '<tr>
+                                                <td><img src="'.site_url().'public/img/jugadores/'.$jugador->imagen.'" alt="foto" id="foto-thumb"></td>
                                                 <td><a href="'.site_url().'cliente-edit/'.$jugador->id.'" id="link-editar">'.$jugador->nombre.' '.$jugador->apellido.'</a></td>
+                                                <td>'.$jugador->apodo.'</td>
                                                 <td>'.$jugador->documento.'</td>
                                                 <td>Equipo</td>
-                                                <td>'.$jugador->imagen.'</td>
                                             ';
 
                                             echo '<td>

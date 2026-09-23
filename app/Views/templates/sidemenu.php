@@ -113,6 +113,12 @@
                       <p>Registrar un eqiupo</p>
                     </a>
                   </li>
+                  <li class="nav-item">
+                    <a href="<?= site_url(); ?>form-load-equipos" class="nav-link">
+                      <i class="nav-icon bi bi-circle"></i>
+                      <p>Cargar equipos</p>
+                    </a>
+                  </li>
                 </ul>
               </li>
               <li class="nav-item">
@@ -163,6 +169,12 @@
                     <a href="<?= site_url(); ?>form-califica-arbitro" class="nav-link">
                       <i class="nav-icon bi bi-circle"></i>
                       <p>Calificar árbitro</p>
+                    </a>
+                  </li>
+                  <li class="nav-item">
+                    <a href="<?= site_url(); ?>form-load-arbitros" class="nav-link">
+                      <i class="nav-icon bi bi-circle"></i>
+                      <p>Cargar lista de árbitros</p>
                     </a>
                   </li>
                 </ul>

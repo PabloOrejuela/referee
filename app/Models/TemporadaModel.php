@@ -4,15 +4,15 @@ namespace App\Models;
 
 use CodeIgniter\Model;
 
-class TemporadaModel extends Model
-{
+class TemporadaModel extends Model {
+
     protected $table            = 'temporadas';
     protected $primaryKey       = 'id';
     protected $useAutoIncrement = true;
     protected $returnType       = 'object';
     protected $useSoftDeletes   = false;
     protected $protectFields    = true;
-    protected $allowedFields    = ['temporada'];
+    protected $allowedFields    = ['temporada','estado'];
 
     protected bool $allowEmptyInserts = false;
     protected bool $updateOnlyChanged = true;

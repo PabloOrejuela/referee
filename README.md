@@ -2,7 +2,7 @@
 
 <h3>Cambios</h3>
 <ul>
-    <li>Creado el grid de equipos</li>
+    <li>Creado el form de subir árbitros</li>
 </ul>
 
 <h3>Fixes</h3>

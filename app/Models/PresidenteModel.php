@@ -12,7 +12,7 @@ class PresidenteModel extends Model
     protected $returnType       = 'object';
     protected $useSoftDeletes   = false;
     protected $protectFields    = true;
-    protected $allowedFields    = ['idusuario','idequipo','idtemporada'];
+    protected $allowedFields    = ['presidente','idequipo','idtemporada'];
 
     protected bool $allowEmptyInserts = false;
     protected bool $updateOnlyChanged = true;

@@ -4,15 +4,15 @@ namespace App\Models;
 
 use CodeIgniter\Model;
 
-class ArbitroModel extends Model {
+class EquipoCampeonatoModel extends Model {
 
-    protected $table            = 'arbitros';
+    protected $table            = 'equipo_campeonatos';
     protected $primaryKey       = 'id';
     protected $useAutoIncrement = true;
     protected $returnType       = 'object';
     protected $useSoftDeletes   = false;
     protected $protectFields    = true;
-    protected $allowedFields    = ['nombre','fecha_nac'];
+    protected $allowedFields    = ['idequipo','idcampeonato'];
 
     protected bool $allowEmptyInserts = false;
     protected bool $updateOnlyChanged = true;

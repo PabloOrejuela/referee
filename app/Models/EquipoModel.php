@@ -12,7 +12,7 @@ class EquipoModel extends Model
     protected $returnType       = 'object';
     protected $useSoftDeletes   = false;
     protected $protectFields    = true;
-    protected $allowedFields    = ['nombre_campeonato','imagen','descripcion','fecha_fundacion','idplantilla','idtecnico'];
+    protected $allowedFields    = ['nombre','siglas','imagen','descripcion','fecha_fundacion'];
 
     protected bool $allowEmptyInserts = false;
     protected bool $updateOnlyChanged = true;

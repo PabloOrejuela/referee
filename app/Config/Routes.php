@@ -18,6 +18,8 @@ $routes->get('form-nuevo-usuario', 'Usuarios::formNuevoUsuario');
 //Arbitros
 $routes->get('arbitros', 'Arbitros::index');
 $routes->get('form-nuevo-arbitro', 'Arbitros::formNuevoArbitro');
+$routes->get('form-load-arbitros', 'Arbitros::formLoadArbitrosData');
+$routes->post('load-arbitros', 'Arbitros::loadArbitrosData');
 
 //Ligas
 $routes->get('ligas', 'Ligas::index');
@@ -28,6 +30,8 @@ $routes->post('insert-liga', 'Ligas::insertLiga');
 
 // Equipos (requiere permiso 'equipo')
 $routes->get('equipos', 'Equipos::equipos');
+$routes->get('form-load-equipos', 'Equipos::formLoadEquiposData');
+$routes->post('load-equipos', 'Equipos::loadEquiposData');
 //$routes->get('equipos', 'Equipos::index', ['filter' => 'auth:equipo']);
 
 // Arbitros (requiere permiso 'arbitraje')
