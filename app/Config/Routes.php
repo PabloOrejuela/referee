@@ -17,9 +17,12 @@ $routes->get('form-nuevo-usuario', 'Usuarios::formNuevoUsuario');
 
 //Arbitros
 $routes->get('arbitros', 'Arbitros::index');
+$routes->get('form-califica-arbitro', 'Arbitros::formCalificaArbitro');
+$routes->get('form-edit-arbitro/(:num)', 'Arbitros::formEditArbitro/$1');
 $routes->get('form-nuevo-arbitro', 'Arbitros::formNuevoArbitro');
 $routes->get('form-load-arbitros', 'Arbitros::formLoadArbitrosData');
 $routes->post('load-arbitros', 'Arbitros::loadArbitrosData');
+$routes->post('update-arbitro', 'Arbitros::updateArbitro');
 
 //Ligas
 $routes->get('ligas', 'Ligas::index');

@@ -16,35 +16,34 @@
                             <thead>
                                 <th>Usuario</th>
                                 <th>Documento</th>
+                                <th>Fecha nacimiento</th>
                                 <th>Teléfono</th>
                                 <th>Calificacion</th>
-                                <th></th>
+                                <th>Estado</th>
                                 <th></th>
                             </thead>
                             <tbody>
                                 <?php
                                     if (isset($arbitros) && $arbitros != NULL) {
-                                        foreach ($arbitros as $key => $jugador) {
+                                        foreach ($arbitros as $key => $arbitro) {
                                             echo '<tr>
-                                                <td><a href="'.site_url().'cliente-edit/'.$jugador->id.'" id="link-editar">'.$jugador->nombre.' '.$jugador->apellido.'</a></td>
-                                                <td>'.$jugador->documento.'</td>
-                                                <td>'.$jugador->telf_1.'</td>
-                                                <td>'.$jugador->calificacion.' puntos</td>';
-
+                                                <td><a href="'.site_url().'form-edit-arbitro/'.$arbitro->id.'" id="link-editar">'.$arbitro->nombre.'</a></td>
+                                                <td>'.$arbitro->documento.'</td>
+                                                <td>'.$arbitro->fecha_nac.'</td>
+                                                <td>'.$arbitro->telf_1.'</td>
+                                                <td>'.$arbitro->calificacion_global.' puntos</td>';
+                                                if ($arbitro->estado === '1') {
+                                                    echo '<td>Activo</td>';
+                                                }else{
+                                                    echo '<td>Inactivo</td>';
+                                                }
                                             echo '<td>
-                                                <div class="contenedor">
-                                                    <a type="button" id="btn-register" href="'.site_url().'print-client-historial/'.$jugador->id.'" class="btnAction">
-                                                        <img src="'.site_url().'public/img/btn-print.png" width="30" >
-                                                    </a>
-                                                </div>
-                                            </td>
-                                            <td>
-                                                <div class="contenedor">
-                                                    <a type="button" id="btn-register" href="'.site_url().'cliente-delete/'.$jugador->id.'" class="btnAction">
-                                                        <img src="'.site_url().'public/img/delete.png" width="30" >
-                                                    </a>
-                                                </div>
-                                            </td>
+                                                    <div class="contenedor">
+                                                        <a type="button" id="btn-register" href="'.site_url().'print-client-historial/'.$arbitro->id.'" class="btnAction">
+                                                            <img src="'.site_url().'public/img/btn-print.png" width="30" >
+                                                        </a>
+                                                    </div>
+                                                </td>
                                             </tr>';
                                     }
                                     }

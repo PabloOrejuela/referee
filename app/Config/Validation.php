@@ -41,4 +41,19 @@ class Validation extends BaseConfig
     // --------------------------------------------------------------------
     // Rules
     // --------------------------------------------------------------------
+
+    public $formArbitro = [
+        'nombre'   => 'required',
+        //'documento'   => 'required',
+        
+    ]; 
+
+    public $formArbitro_errors = [
+        'nombre' => [
+            'required' => 'El campo "Nombre" es obligatorio',
+        ],
+        // 'documento' => [
+        //     'required' => 'El campo "documento" es obligatorio',
+        // ],
+    ];
 }

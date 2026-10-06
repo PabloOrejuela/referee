@@ -30,12 +30,23 @@ class Arbitros extends BaseController {
 
     public function index() {
 
-        $data['arbitros'] = $this->arbitroModel->select('arbitros.id as id,nombre,apellido,documento,telf_1,calificacion')
-            ->join('users','users.id = arbitros.idusuario')
+        $data['arbitros'] = $this->arbitroModel
+            ->select('arbitros.id as id,arbitros.nombre as nombre,documento,telf_1,calificacion_global,fecha_nac,estado')
+            ->join('arbitros_calificaciones','arbitros_calificaciones.idarbitro = arbitros.id','left')
             ->findAll();
 
         $data['title'] = 'Arbitros';
         $data['main_content'] = 'arbitros/grid_arbitros';
+        return view('dashboard/index', $data);
+    }
+
+    public function formCalificaArbitro(){
+
+        $data['provincias'] = $this->provinciaModel->findAll();
+        $data['roles'] = $this->rolModel->findAll();
+        
+        $data['title'] = 'Arbitros';
+        $data['main_content'] = 'arbitros/form_califica_arbitro';
         return view('dashboard/index', $data);
     }
 
@@ -47,6 +58,49 @@ class Arbitros extends BaseController {
         $data['title'] = 'Arbitros';
         $data['main_content'] = 'arbitros/form_nuevo_arbitro';
         return view('dashboard/index', $data);
+    }
+
+    public function formEditArbitro($id){
+        $data['arbitro'] = $this->arbitroModel->where('id', $id)->first();
+        $data['provincias'] = $this->provinciaModel->findAll();
+        $data['roles'] = $this->rolModel->findAll();
+
+        $data['title'] = 'Arbitros';
+        $data['main_content'] = 'arbitros/form_edit_arbitro';
+        return view('dashboard/index', $data);
+    }
+
+    public function updateArbitro(){
+
+        $id = $this->request->getPost('id');
+        //echo '<pre>'.var_export($id, true).'</pre>';exit;
+
+        $this->validation->setRuleGroup('formArbitro');
+
+        if (!$this->validation->withRequest($this->request)->run()) {
+            return redirect()->back()
+                ->withInput()
+                ->with('errors', $this->validation->getErrors());
+        }
+
+        // Preparo los datos para el update
+        $arbitro = [
+            'nombre' => strtoupper($this->request->getPost('nombre')),
+            'documento' => $this->request->getPost('documento'),
+            'telf_1' => $this->request->getPost('telf_1'),
+            'fecha_nac' => $this->request->getPost('fecha_nac'),
+            'estado' => $this->request->getPost('estado'),
+        ];
+
+        // update
+        $res = $this->arbitroModel->update($id, $arbitro);
+
+        if ($res) {
+            return redirect()->to('arbitros');
+        }
+
+        $this->session->setFlashdata('mensaje', $data);
+        return redirect()->back()->with('mensaje', 'Hubo un error. No se ha podido actualizar la información');
     }
 
     public function formLoadArbitrosData() {
@@ -129,8 +183,6 @@ class Arbitros extends BaseController {
                         ->where('nombre', $nombre)
                         ->first();
 
-                        
-
                     if ($existArbitro) {
 
                         $arbitro = [
@@ -152,7 +204,7 @@ class Arbitros extends BaseController {
                     }
                 }
                 $data['mensaje'] = 'Los datos se han cargado revise el archivo de logs para ver si ha habido alguna novedad';
-                // //return redirect()->to('frm-importar-datos-ventas');
+                
                 $this->session->setFlashdata('mensaje', $data);
                 
                 return redirect()->back()->with('mensaje', 'Los datos se han cargado revise el archivo de logs para ver si ha habido alguna novedad');

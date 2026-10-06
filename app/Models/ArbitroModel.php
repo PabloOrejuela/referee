@@ -12,7 +12,7 @@ class ArbitroModel extends Model {
     protected $returnType       = 'object';
     protected $useSoftDeletes   = false;
     protected $protectFields    = true;
-    protected $allowedFields    = ['nombre','fecha_nac'];
+    protected $allowedFields    = ['nombre','fecha_nac','documento','telf_1','calificacion_gobal','estado'];
 
     protected bool $allowEmptyInserts = false;
     protected bool $updateOnlyChanged = true;
