@@ -21,6 +21,7 @@ $routes->get('form-califica-arbitro', 'Arbitros::formCalificaArbitro');
 $routes->get('form-edit-arbitro/(:num)', 'Arbitros::formEditArbitro/$1');
 $routes->get('form-nuevo-arbitro', 'Arbitros::formNuevoArbitro');
 $routes->get('form-load-arbitros', 'Arbitros::formLoadArbitrosData');
+$routes->post('insert-arbitro', 'Arbitros::insertArbitro');
 $routes->post('load-arbitros', 'Arbitros::loadArbitrosData');
 $routes->post('update-arbitro', 'Arbitros::updateArbitro');
 

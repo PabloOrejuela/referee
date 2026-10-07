@@ -43,7 +43,7 @@ class Validation extends BaseConfig
     // --------------------------------------------------------------------
 
     public $formArbitro = [
-        'nombre'   => 'required',
+        'nombre'   => 'required|alpha_space',
         //'documento'   => 'required',
         
     ]; 
@@ -51,6 +51,7 @@ class Validation extends BaseConfig
     public $formArbitro_errors = [
         'nombre' => [
             'required' => 'El campo "Nombre" es obligatorio',
+            'alpha_space' => 'El campo "Nombre" solo puede contener letras no simbolos ni números',
         ],
         // 'documento' => [
         //     'required' => 'El campo "documento" es obligatorio',

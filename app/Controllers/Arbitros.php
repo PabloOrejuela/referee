@@ -60,6 +60,36 @@ class Arbitros extends BaseController {
         return view('dashboard/index', $data);
     }
 
+    public function insertArbitro(){
+
+        $this->validation->setRuleGroup('formArbitro');
+
+        if (!$this->validation->withRequest($this->request)->run()) {
+            return redirect()->back()
+                ->withInput()
+                ->with('errors', $this->validation->getErrors());
+        }
+
+        // Preparo los datos para el update
+        $arbitro = [
+            'nombre' => strtoupper($this->request->getPost('nombre')),
+            'documento' => $this->request->getPost('documento'),
+            'telf_1' => $this->request->getPost('telf_1'),
+            'fecha_nac' => $this->request->getPost('fecha_nac'),
+            'estado' => $this->request->getPost('estado'),
+        ];
+
+        // update
+        $res = $this->arbitroModel->insert($arbitro);
+
+        if ($res) {
+            return redirect()->to('arbitros');
+        }
+
+        $this->session->setFlashdata('mensaje', $data);
+        return redirect()->back()->with('mensaje', 'Hubo un error. No se ha podido registrar el árbitro');
+    }
+
     public function formEditArbitro($id){
         $data['arbitro'] = $this->arbitroModel->where('id', $id)->first();
         $data['provincias'] = $this->provinciaModel->findAll();

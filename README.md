@@ -2,8 +2,7 @@
 
 <h3>Cambios</h3>
 <ul>
-    <li>Creado el grid de árbitros</li>
-    <li>Creado el form de editar arbitro</li>
+    <li>Implementado el form de registro de nuevo árbitro</li>
 </ul>
 
 <h3>Fixes</h3>
