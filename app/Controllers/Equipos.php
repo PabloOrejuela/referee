@@ -43,6 +43,7 @@ class Equipos extends BaseController {
     public function equipos() {
         //Este sería el grid de equipos
 
+        $data['session'] = $this->session;
         $data['equipos'] = $this->equipoModel
             ->select('equipos.id as id,nombre,siglas,imagen,descripcion,fecha_fundacion,presidentes.presidente as presidente')
             ->join('presidentes', 'presidentes.idequipo=equipos.id','left')

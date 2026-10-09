@@ -19,7 +19,7 @@
                                 <th>Seudónimo</th>
                                 <th>Documento</th>
                                 <th>Equipo</th>
-                                <th></th>
+                                <th>Posición</th>
                                 <th></th>
                             </thead>
                             <tbody>
@@ -28,27 +28,28 @@
                                         foreach ($jugadores as $key => $jugador) {
                                             echo '<tr>
                                                 <td><img src="'.site_url().'public/img/jugadores/'.$jugador->imagen.'" alt="foto" id="foto-thumb"></td>
-                                                <td><a href="'.site_url().'cliente-edit/'.$jugador->id.'" id="link-editar">'.$jugador->nombre.' '.$jugador->apellido.'</a></td>
+                                                <td><a href="'.site_url().'form-edit-jugador/'.$jugador->id.'" id="link-editar">'.$jugador->nombre.' '.$jugador->apellido.'</a></td>
                                                 <td>'.$jugador->apodo.'</td>
                                                 <td>'.$jugador->documento.'</td>
-                                                <td>Equipo</td>
+                                                <td>'.$jugador->equipo.'</td>
+                                                <td>'.$jugador->posicion.'</td>
                                             ';
 
                                             echo '<td>
                                                 <div class="contenedor">
-                                                    <a type="button" id="btn-register" href="'.site_url().'print-client-historial/'.$jugador->id.'" class="btnAction">
+                                                    <a type="button" id="btn-register" href="'.site_url().'print-jugador-historial/'.$jugador->id.'" class="btnAction">
                                                         <img src="'.site_url().'public/img/btn-print.png" width="30" >
                                                     </a>
                                                 </div>
-                                            </td>
-                                            <td>
-                                                <div class="contenedor">
-                                                    <a type="button" id="btn-register" href="'.site_url().'cliente-delete/'.$jugador->id.'" class="btnAction">
-                                                        <img src="'.site_url().'public/img/delete.png" width="30" >
-                                                    </a>
-                                                </div>
-                                            </td>
-                                            </tr>';
+                                            </td>';
+                                            // <td>
+                                            //     <div class="contenedor">
+                                            //         <a type="button" id="btn-register" href="'.site_url().'cliente-delete/'.$jugador->id.'" class="btnAction">
+                                            //             <img src="'.site_url().'public/img/delete.png" width="30" >
+                                            //         </a>
+                                            //     </div>
+                                            // </td>
+                                            echo '</tr>';
                                     }
                                     }
                                 ?>

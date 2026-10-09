@@ -14,6 +14,7 @@ $routes->get('campeonatos', 'Campeonatos::index');
 //Usuarios
 $routes->get('usuarios', 'Usuarios::index');
 $routes->get('form-nuevo-usuario', 'Usuarios::formNuevoUsuario');
+$routes->get('form-edit-usuario/(:num)', 'Usuarios::formEditUsuario/$1');
 
 //Arbitros
 $routes->get('arbitros', 'Arbitros::index');
@@ -24,6 +25,9 @@ $routes->get('form-load-arbitros', 'Arbitros::formLoadArbitrosData');
 $routes->post('insert-arbitro', 'Arbitros::insertArbitro');
 $routes->post('load-arbitros', 'Arbitros::loadArbitrosData');
 $routes->post('update-arbitro', 'Arbitros::updateArbitro');
+
+//CAMPEONATOS
+$routes->get('campeonatos/provincia/(:num)', 'Campeonatos::getLigasByProvincia/$1');
 
 //Ligas
 $routes->get('ligas', 'Ligas::index');
@@ -47,6 +51,7 @@ $routes->get('reportes', 'Reportes::index', ['filter' => 'auth:informes']);
 //Jugadores
 $routes->get('jugadores', 'Jugadores::index');
 $routes->get('form-nuevo-jugador', 'Jugadores::formNuevoJugador');
+$routes->get('form-edit-jugador/(:num)', 'Jugadores::formEditJugador/$1');
 
 // $routes->group('', ['filter' => 'auth'], static function($routes) {
 //     $routes->get('nuevo-jugador', 'Jugadores::formNuevoJugador');

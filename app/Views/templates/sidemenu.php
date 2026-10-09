@@ -28,34 +28,57 @@
             >
 
             <h5 class="nav-header">Menú</h5>
-            <li class="nav-item">
+              <?php
+                if ($session->user && $session->user['idrol'] == 1) {
+                  echo '<li class="nav-item">
+                      <a href="#" class="nav-link">
+                        <i class="nav-icon bi bi-person-badge"></i>
+                        <p>
+                          Administración
+                          <i class="nav-arrow bi bi-chevron-right"></i>
+                        </p>
+                      </a>
+                      <ul class="nav nav-treeview">
+                        <li class="nav-item">
+                          <a href="<?= site_url(); ?>usuarios" class="nav-link">
+                            <i class="nav-icon bi bi-circle"></i>
+                            <p>Usuarios</p>
+                          </a>
+                        </li>
+                        <li class="nav-item">
+                          <a href="<?= site_url(); ?>form-nuevo-usuario" class="nav-link">
+                            <i class="nav-icon bi bi-circle"></i>
+                            <p>Registrar un usuario</p>
+                          </a>
+                        </li>
+                      </ul>
+                    </li>
+                  ';
+                }
+              ?>
+              
+              <li class="nav-item">
                 <a href="#" class="nav-link">
-                  <i class="nav-icon bi bi-person-badge"></i>
+                  <i class="nav-icon bi bi-trophy"></i>
                   <p>
-                    Administración
+                    Campeonatos
                     <i class="nav-arrow bi bi-chevron-right"></i>
                   </p>
                 </a>
                 <ul class="nav nav-treeview">
                   <li class="nav-item">
-                    <a href="<?= site_url(); ?>usuarios" class="nav-link">
+                    <a href="<?= site_url(); ?>campeonatos" class="nav-link">
                       <i class="nav-icon bi bi-circle"></i>
-                      <p>Usuarios</p>
+                      <p>Elegir campeonato</p>
                     </a>
                   </li>
                   <li class="nav-item">
-                    <a href="<?= site_url(); ?>form-nuevo-usuario" class="nav-link">
+                    <a href="<?= site_url(); ?>partidos" class="nav-link">
                       <i class="nav-icon bi bi-circle"></i>
-                      <p>Registrar un usuario</p>
+                      <p>Partidos</p>
                     </a>
                   </li>
                 </ul>
-              </li>
-              <li class="nav-item">
-                <a href="<?= site_url(); ?>campeonatos" class="nav-link">
-                  <i class="nav-icon bi bi-trophy"></i>
-                  <p>Campeonatos</p>
-                </a>
               </li>
               <li class="nav-item">
                 <a href="#" class="nav-link">

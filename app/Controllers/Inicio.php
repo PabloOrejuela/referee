@@ -16,10 +16,12 @@ class Inicio extends BaseController {
         parent::initController(...$params);
 
         // Instancias los modelos
-        $this->userModel = model(RolModel::class);
+        $this->userModel = model(UserModel::class);
     }
 
     public function index() {
+        
+        $data['session'] = $this->session;
 
         $usuario = [
             'is_logged' => 0
@@ -32,6 +34,8 @@ class Inicio extends BaseController {
 
     public function formLogin() {
 
+        $data['session'] = $this->session;
+
         $data['title'] = 'Ingresar al sistema';
         $data['main_content'] = 'home/form_login';
         return view('dashboard/index', $data);
@@ -42,8 +46,8 @@ class Inicio extends BaseController {
         $username = $this->request->getPost('username');
         $password = $this->request->getPost('password');
 
-        $user = $this->userModel->where('usuario', $username)->first();
-
+        $user = $this->userModel->where('usuario', $username)->first();echo $this->db->getLastQuery();
+        
         if (! $user || ! password_verify($password, $user->password)) {
             return redirect()->back()->with('error', 'Usuario o contraseña incorrectos.');
         }
@@ -51,7 +55,7 @@ class Inicio extends BaseController {
         if ($user->estado != 1) {
             return redirect()->back()->with('error', 'El usuario no se encuentra activo.');
         }
-        
+
         $session = session();
         $session->set([
             'isLoggedIn' => true,

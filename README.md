@@ -2,7 +2,7 @@
 
 <h3>Cambios</h3>
 <ul>
-    <li>Implementado el form de registro de nuevo árbitro</li>
+    <li>Ya funciona el form login, además ya está funcional la zonad el usuario en el nav header</li>
 </ul>
 
 <h3>Fixes</h3>

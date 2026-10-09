@@ -29,7 +29,7 @@ class Arbitros extends BaseController {
     }
 
     public function index() {
-
+        $data['session'] = $this->session;
         $data['arbitros'] = $this->arbitroModel
             ->select('arbitros.id as id,arbitros.nombre as nombre,documento,telf_1,calificacion_global,fecha_nac,estado')
             ->join('arbitros_calificaciones','arbitros_calificaciones.idarbitro = arbitros.id','left')

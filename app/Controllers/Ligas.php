@@ -27,6 +27,7 @@ class Ligas extends BaseController {
     }
 
     public function index(){
+        $data['session'] = $this->session;
         $data['provincias'] = $this->provinciaModel->findAll();
         
         $data['title'] = 'Ligas';
