@@ -20,9 +20,7 @@ class Inicio extends BaseController {
     }
 
     public function index() {
-        
-        $data['session'] = $this->session;
-
+    
         $usuario = [
             'is_logged' => 0
         ];
@@ -33,8 +31,6 @@ class Inicio extends BaseController {
     }
 
     public function formLogin() {
-
-        $data['session'] = $this->session;
 
         $data['title'] = 'Ingresar al sistema';
         $data['main_content'] = 'home/form_login';
@@ -77,6 +73,7 @@ class Inicio extends BaseController {
     }
 
     public function logout() {
+        
         $session = session();
         $user = $session->get('user');
 

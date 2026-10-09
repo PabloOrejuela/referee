@@ -27,7 +27,7 @@ class Ligas extends BaseController {
     }
 
     public function index(){
-        $data['session'] = $this->session;
+        
         $data['provincias'] = $this->provinciaModel->findAll();
         
         $data['title'] = 'Ligas';
@@ -51,6 +51,7 @@ class Ligas extends BaseController {
     }
 
     public function formNuevaLiga(){
+        
         $data['categorias'] = $this->categoriaModel->findAll();
         $data['provincias'] = $this->provinciaModel->findAll();
         

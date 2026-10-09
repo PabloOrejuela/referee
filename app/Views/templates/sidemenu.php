@@ -29,7 +29,10 @@
 
             <h5 class="nav-header">Menú</h5>
               <?php
-                if ($session->user && $session->user['idrol'] == 1) {
+              
+                $user = session()->get('user');
+
+                if ($user && $user['idrol'] == 1) {
                   echo '<li class="nav-item">
                       <a href="#" class="nav-link">
                         <i class="nav-icon bi bi-person-badge"></i>
@@ -40,13 +43,13 @@
                       </a>
                       <ul class="nav nav-treeview">
                         <li class="nav-item">
-                          <a href="<?= site_url(); ?>usuarios" class="nav-link">
+                          <a href="'.site_url().'usuarios" class="nav-link">
                             <i class="nav-icon bi bi-circle"></i>
                             <p>Usuarios</p>
                           </a>
                         </li>
                         <li class="nav-item">
-                          <a href="<?= site_url(); ?>form-nuevo-usuario" class="nav-link">
+                          <a href="'.site_url().'form-nuevo-usuario" class="nav-link">
                             <i class="nav-icon bi bi-circle"></i>
                             <p>Registrar un usuario</p>
                           </a>

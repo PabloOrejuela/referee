@@ -32,8 +32,9 @@ class Jugadores extends BaseController {
     }
 
     public function index(){
+        
         $temporadaActual = $this->temporadaModel->where('estado', 1)->first();
-        $data['session'] = $this->session;
+        
         $data['jugadores'] = $this->jugadorModel
             ->select('jugadores.id as id,jugadores.nombre as nombre,apellido,apodo,documento,jugadores.imagen as imagen,jugadores.estado as estado,
                     pierna_habil,posicion,equipos.nombre as equipo,camiseta')

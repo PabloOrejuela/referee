@@ -94,7 +94,9 @@
         </li>
         <!--end::Color Mode Toggle-->
         <?php 
-          if ($session->user && $session->user['idrol'] == 1) {
+          $user = session()->get('user');
+
+          if ($user && $user['idrol'] == 1) {
             echo '<!--begin::User Menu Dropdown-->
                 <li class="nav-item dropdown user-menu">
                   <a href="#" class="nav-link dropdown-toggle" data-bs-toggle="dropdown">

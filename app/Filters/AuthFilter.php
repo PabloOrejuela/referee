@@ -12,39 +12,54 @@ class AuthFilter implements FilterInterface
     {
         $session = service('session');
 
+        // Verificar si el usuario ha iniciado sesión.
         if (! $session->get('isLoggedIn')) {
             return redirect()->to(site_url('login'));
         }
-        // If route specifies permission arguments, validate against role permissions
-        if ($arguments && is_array($arguments) && count($arguments) > 0) {
-            $user = $session->get('user');
-            $roleId = is_object($user) ? ($user->idrol ?? null) : ($user['idrol'] ?? null);
 
-            // admin shortcut: role id 1 allowed to everything
-            if ($roleId === 1 || $roleId === '1') {
+        // Si la ruta no requiere permisos específicos,
+        // basta con comprobar que el usuario esté autenticado.
+        if (empty($arguments)) {
+            return null;
+        }
+
+        // Obtener el rol del usuario desde la sesión.
+        $user = $session->get('user');
+
+        $roleId = is_object($user)
+            ? ($user->idrol ?? null)
+            : (is_array($user) ? ($user['idrol'] ?? null) : null);
+
+        // Si no se pudo identificar el rol, denegar el acceso.
+        if ($roleId === null) {
+            return redirect()->to(site_url('/'))
+                ->with('error', 'No tiene permiso para acceder a esta sección.');
+        }
+
+        // El administrador tiene acceso a todas las secciones.
+        if ((int) $roleId === 1) {
+            return null;
+        }
+
+        // Verificar los permisos del rol en la base de datos.
+        $aclConfig = new \Config\Acl();
+
+        foreach ($arguments as $required) {
+            if ($aclConfig->hasPermission($roleId, $required)) {
                 return null;
             }
-
-            $aclConfig = new \Config\Acl();
-            $rolePerms = $aclConfig->rolePermissions[$roleId] ?? [];
-
-            foreach ($arguments as $required) {
-                // allow wildcard permission
-                if (in_array('*', $rolePerms, true)) {
-                    return null;
-                }
-
-                if (in_array($required, $rolePerms, true)) {
-                    return null; // has permission
-                }
-            }
-
-            return redirect()->to(site_url('/'))->with('error', 'No tiene permiso para acceder a esta sección.');
         }
+
+        // Denegar el acceso si no tiene ninguno de los permisos requeridos.
+        return redirect()->to(site_url('/'))
+            ->with('error', 'No tiene permiso para acceder a esta sección.');
     }
 
-    public function after(RequestInterface $request, ResponseInterface $response, $arguments = null)
-    {
-        // No action required after the request.
+    public function after(
+        RequestInterface $request,
+        ResponseInterface $response,
+        $arguments = null
+    ) {
+        // No se requiere ninguna acción después de la solicitud.
     }
 }

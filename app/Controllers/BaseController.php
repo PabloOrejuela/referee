@@ -42,8 +42,8 @@ abstract class BaseController extends Controller {
     /**
      * @return void
      */
-    public function initController(RequestInterface $request, ResponseInterface $response, LoggerInterface $logger)
-    {
+    public function initController(RequestInterface $request, ResponseInterface $response, LoggerInterface $logger) {
+
         // Load here all helpers you want to be available in your controllers that extend BaseController.
         // Caution: Do not put the this below the parent::initController() call below.
         // $this->helpers = ['form', 'url'];
@@ -65,5 +65,15 @@ abstract class BaseController extends Controller {
         $this->request = \Config\Services::request();
         $this->validation = \Config\Services::validation();
         $this->image = \Config\Services::image();
+    }
+
+    /**
+     * Esta función me va a permitir pasar variables comunes para 
+     * todos los controladores
+    */
+    protected function getCommonData(): array {
+        return [
+            'session' => $this->session,
+        ];
     }
 }

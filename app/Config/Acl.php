@@ -3,21 +3,26 @@
 namespace Config;
 
 use CodeIgniter\Config\BaseConfig;
+use Config\Database;
 
-class Acl extends BaseConfig
-{
-    /**
-     * Map role id => permissions (slugs)
-     * Adjust these values to match your application's roles.
-     */
-    public array $rolePermissions = [
-        // role 1 = admin (all permissions)
-        1 => ['*'],
-        // example mappings - adapt to your role ids
-        2 => ['equipo'],
-        3 => ['informes'],
-        4 => ['arbitraje'],
-        5 => [],
-        6 => [],
-    ];
+class Acl extends BaseConfig {
+
+    public function hasPermission($roleId, string $permission): bool { 
+        // Evita consultar columnas que no sean permisos válidos. 
+        $permissions = [ 'backend', 'informes', 'liga', 'equipo', 'jugador', 'arbitraje']; 
+
+        if (! in_array($permission, $permissions, true)) { 
+            return false; 
+        }
+
+        $db = Database::connect(); 
+        $role = $db->table('roles') 
+            ->select($permission)
+            ->where('id', $roleId)
+            ->get()
+            ->getRowArray(); 
+
+        return $role !== null && (int) $role[$permission] === 1; 
+    }
+
 }

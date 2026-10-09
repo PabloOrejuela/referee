@@ -41,7 +41,7 @@ class Arbitros extends BaseController {
     }
 
     public function formCalificaArbitro(){
-
+        $data['session'] = $this->session;
         $data['provincias'] = $this->provinciaModel->findAll();
         $data['roles'] = $this->rolModel->findAll();
         

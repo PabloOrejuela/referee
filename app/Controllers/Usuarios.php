@@ -26,7 +26,7 @@ class Usuarios extends BaseController {
     }
 
     public function index(){
-
+        
         $data['usuarios'] = $this->userModel->findAll();
 
         $data['title'] = 'Usuarios';
