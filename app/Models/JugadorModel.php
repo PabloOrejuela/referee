@@ -13,7 +13,7 @@ class JugadorModel extends Model {
     protected $useSoftDeletes   = false;
     protected $protectFields    = true;
     protected $allowedFields    = [
-        'nombre','apellido','documento','email','telf','direccion','imagen','fecha_nac','estado','pierna_habil','posicion','altura','peso'
+        'nombre','apellido','apodo','documento','email','telf','direccion','imagen','fecha_nac','estado','pierna_habil','posicion','altura','peso'
     ];
 
     protected bool $allowEmptyInserts = false;

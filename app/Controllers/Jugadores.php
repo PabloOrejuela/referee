@@ -75,4 +75,51 @@ class Jugadores extends BaseController {
         
     }
 
+    public function updateJugador(){
+
+        $id = $this->request->getPost('id');
+
+        $this->validation->setRuleGroup('formJugador');
+
+        if (!$this->validation->withRequest($this->request)->run()) {
+            return redirect()->back()
+                ->withInput()
+                ->with('errors', $this->validation->getErrors());
+        }
+
+        // Los nombres de las claves corresponden a los campos de jugadores.
+        $jugador = [
+            'nombre' => strtoupper($this->request->getPost('nombre')),
+            'apellido' => strtoupper($this->request->getPost('apellido')),
+            'apodo' => $this->request->getPost('apodo'),
+            'email' => $this->request->getPost('email'),
+            'documento' => $this->request->getPost('documento'),
+            'telf' => $this->request->getPost('telf'),
+            'direccion' => $this->request->getPost('direccion'),
+            'fecha_nac' => $this->request->getPost('fecha_nac'),
+            'estado' => $this->request->getPost('estado'),
+            'pierna_habil' => $this->request->getPost('pierna_habil'),
+            'posicion' => $this->request->getPost('posicion'),
+            'altura' => $this->request->getPost('altura'),
+            'peso' => $this->request->getPost('peso'),
+        ];
+
+        // El campo de archivo llega por separado y se actualiza solo si se subió uno nuevo.
+        $imagen = $this->request->getFile('imagen');
+        if ($imagen && $imagen->isValid() && !$imagen->hasMoved()) {
+            $nombreImagen = $imagen->getRandomName();
+            if ($imagen->move(FCPATH . 'public/img/jugadores', $nombreImagen)) {
+                $jugador['imagen'] = $nombreImagen;
+            }
+        }
+
+        $res = $this->jugadorModel->update($id, $jugador);
+
+        if ($res) {
+            return redirect()->to('jugadores');
+        }
+
+        return redirect()->back()->with('mensaje', 'Hubo un error. No se ha podido actualizar la información');
+    }
+
 }

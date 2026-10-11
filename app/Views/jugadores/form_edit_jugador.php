@@ -27,7 +27,7 @@
                         </div>
                         <div class="card-body">
 
-                            <form action="<?= site_url('jugador-update') ?>" method="post" enctype="multipart/form-data">
+                            <form action="<?= site_url('update-jugador') ?>" method="post" enctype="multipart/form-data">
                                 <?= csrf_field() ?>
                                 <div class="row gy-3">
                                     <div class="col-12">
@@ -154,6 +154,9 @@
                                                     alt="Imagen del usuario"
                                                     style="width: 100px; height: 100px; object-fit: cover; border-radius: 8px;"
                                                 >
+                                                <a href="#" id="cancelar-cambio-imagen" class="d-none mt-2">
+                                                    Cancelar cambio de foto
+                                                </a>
                                             </div>
                                         </div>
                                     </div>
@@ -209,14 +212,13 @@
                                             placeholder="75.0"
                                         >
                                     </div>
-
+                                    <?= form_hidden('id', $jugador->id); ?>
                                     <div class="col-12 mt-4">
                                         <button type="submit" class="btn btn-primary">Guardar</button>
                                         <a href="<?= site_url() ?>jugadores" class="btn btn-secondary ms-2">Cancelar</a>
                                     </div>
                                 </div>
                             </form>
-
                         </div>
                     </div>
                 </div>
@@ -227,3 +229,5 @@
     <!--end::App Content-->
 </main>
 <!--end::App Main-->
+<script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+<script src="<?= site_url(); ?>public/js/form-edit-jugador.js"></script>

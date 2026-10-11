@@ -2,7 +2,7 @@
 
 <h3>Cambios</h3>
 <ul>
-    <li>Se implementó tambien el control de roles en los menús</li>
+    <li>Implementando el update del jugador</li>
 </ul>
 
 <h3>Fixes</h3>

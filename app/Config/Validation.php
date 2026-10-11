@@ -57,4 +57,20 @@ class Validation extends BaseConfig
         //     'required' => 'El campo "documento" es obligatorio',
         // ],
     ];
+
+    public $formJugador = [
+        'nombre'   => 'required|alpha_space',
+        //'documento'   => 'required',
+        
+    ]; 
+
+    public $formJugador_errors = [
+        'nombre' => [
+            'required' => 'El campo "Nombre" es obligatorio',
+            'alpha_space' => 'El campo "Nombre" solo puede contener letras no simbolos ni números',
+        ],
+        // 'documento' => [
+        //     'required' => 'El campo "documento" es obligatorio',
+        // ],
+    ];
 }

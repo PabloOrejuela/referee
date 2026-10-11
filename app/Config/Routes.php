@@ -29,9 +29,11 @@ $routes->get('form-load-equipos', 'Equipos::formLoadEquiposData', ['filter' => '
 $routes->post('load-equipos', 'Equipos::loadEquiposData', ['filter' => 'auth:equipo']);
 
 //Jugadores
-$routes->get('jugadores', 'Jugadores::index');
+
 $routes->get('form-nuevo-jugador', 'Jugadores::formNuevoJugador', ['filter' => 'auth:jugador']);
 $routes->get('form-edit-jugador/(:num)', 'Jugadores::formEditJugador/$1', ['filter' => 'auth:jugador']);
+$routes->get('jugadores', 'Jugadores::index');
+$routes->post('update-jugador', 'Jugadores::updateJugador', ['filter' => 'auth:jugador']);
 
 //Ligas
 $routes->get('ligas', 'Ligas::index');
