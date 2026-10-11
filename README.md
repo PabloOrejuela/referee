@@ -2,7 +2,7 @@
 
 <h3>Cambios</h3>
 <ul>
-    <li>Implementando el update del jugador</li>
+    <li>Implementando todo el form update del jugador</li>
 </ul>
 
 <h3>Fixes</h3>
