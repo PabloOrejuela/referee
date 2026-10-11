@@ -9,7 +9,14 @@ class Acl extends BaseConfig {
 
     public function hasPermission($roleId, string $permission): bool { 
         // Evita consultar columnas que no sean permisos válidos. 
-        $permissions = [ 'backend', 'informes', 'liga', 'equipo', 'jugador', 'arbitraje']; 
+        $permissions = [ 
+            'backend', 
+            'informes', 
+            'liga', 
+            'equipo', 
+            'jugador', 
+            'arbitraje'
+        ]; 
 
         if (! in_array($permission, $permissions, true)) { 
             return false; 

@@ -5,10 +5,12 @@ namespace App\Controllers;
 use App\Controllers\BaseController;
 use CodeIgniter\HTTP\ResponseInterface;
 
+use App\Models\RolModel;
 use App\Models\UserModel;
 
 class Inicio extends BaseController {
 
+    protected $rolModel;
     protected $userModel;
 
     public function initController(...$params) {
@@ -16,6 +18,7 @@ class Inicio extends BaseController {
         parent::initController(...$params);
 
         // Instancias los modelos
+        $this->rolModel = model(RolModel::class);
         $this->userModel = model(UserModel::class);
     }
 
@@ -43,6 +46,7 @@ class Inicio extends BaseController {
         $password = $this->request->getPost('password');
 
         $user = $this->userModel->where('usuario', $username)->first();echo $this->db->getLastQuery();
+        $permisos = $this->rolModel->where('id',$user->id)->first();
         
         if (! $user || ! password_verify($password, $user->password)) {
             return redirect()->back()->with('error', 'Usuario o contraseña incorrectos.');
@@ -64,6 +68,14 @@ class Inicio extends BaseController {
                 'idrol' => $user->idrol,
                 'estado' => $user->estado,
                 'imagen' => $user->imagen,
+            ],
+            'permisos' => [
+                'backend' => $permisos->backend,
+                'informes' => $permisos->informes,
+                'liga' => $permisos->liga,
+                'equipo' => $permisos->equipo,
+                'jugador' => $permisos->jugador,
+                'arbitraje' => $permisos->arbitraje,
             ],
         ]);
 

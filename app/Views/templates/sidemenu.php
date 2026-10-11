@@ -28,11 +28,13 @@
             >
 
             <h5 class="nav-header">Menú</h5>
+              <!-- ADMINISTRACION -->
               <?php
               
                 $user = session()->get('user');
+                $permisos = session()->get('permisos');
 
-                if ($user && $user['idrol'] == 1) {
+                if ($user && $user['idrol'] == 1 && $permisos['backend']) {
                   echo '<li class="nav-item">
                       <a href="#" class="nav-link">
                         <i class="nav-icon bi bi-person-badge"></i>
@@ -59,7 +61,7 @@
                   ';
                 }
               ?>
-              
+              <!-- CAMPEONATOS -->
               <li class="nav-item">
                 <a href="#" class="nav-link">
                   <i class="nav-icon bi bi-trophy"></i>
@@ -83,6 +85,7 @@
                   </li>
                 </ul>
               </li>
+              <!-- LIGAS -->
               <li class="nav-item">
                 <a href="#" class="nav-link">
                   <i class="nav-icon bi bi-person-badge"></i>
@@ -98,26 +101,33 @@
                       <p>Ver ligas</p>
                     </a>
                   </li>
-                  <li class="nav-item">
-                    <a href="<?= site_url(); ?>form-nueva-liga" class="nav-link">
-                      <i class="nav-icon bi bi-circle"></i>
-                      <p>Registrar una liga</p>
-                    </a>
-                  </li>
-                  <li class="nav-item">
-                    <a href="<?= site_url(); ?>form-nueva-liga" class="nav-link">
-                      <i class="nav-icon bi bi-circle"></i>
-                      <p>Registrar ingresos/gastos</p>
-                    </a>
-                  </li>
-                  <li class="nav-item">
-                    <a href="<?= site_url(); ?>form-nueva-liga" class="nav-link">
-                      <i class="nav-icon bi bi-circle"></i>
-                      <p>Informe financiero</p>
-                    </a>
-                  </li>
+                  <?php
+                    if ($user && $user['idrol'] == 1 && $permisos['liga']) {
+                      echo '
+                        <li class="nav-item">
+                          <a href="'.site_url().'form-nueva-liga" class="nav-link">
+                            <i class="nav-icon bi bi-circle"></i>
+                            <p>Registrar una liga</p>
+                          </a>
+                        </li>
+                        <li class="nav-item">
+                          <a href="'.site_url().'ligas" class="nav-link">
+                            <i class="nav-icon bi bi-circle"></i>
+                            <p>Registrar ingresos/gastos</p>
+                          </a>
+                        </li>
+                        <li class="nav-item">
+                          <a href="'.site_url().'ligas" class="nav-link">
+                            <i class="nav-icon bi bi-circle"></i>
+                            <p>Informe financiero</p>
+                          </a>
+                        </li>
+                      ';
+                    }
+                  ?>
                 </ul>
               </li>
+              <!-- EQUIPOS -->
               <li class="nav-item">
                 <a href="#" class="nav-link">
                   <i class="nav-icon bi bi-person-badge"></i>
@@ -133,20 +143,27 @@
                       <p>Ver equipos</p>
                     </a>
                   </li>
-                  <li class="nav-item">
-                    <a href="<?= site_url(); ?>form-nuevo-equipo" class="nav-link">
-                      <i class="nav-icon bi bi-circle"></i>
-                      <p>Registrar un eqiupo</p>
-                    </a>
-                  </li>
-                  <li class="nav-item">
-                    <a href="<?= site_url(); ?>form-load-equipos" class="nav-link">
-                      <i class="nav-icon bi bi-circle"></i>
-                      <p>Cargar equipos</p>
-                    </a>
-                  </li>
+                  <?php
+                    if ($user && $user['idrol'] == 1 && $permisos['equipo']) {
+                      echo '
+                        <li class="nav-item">
+                          <a href="'.site_url().'form-nuevo-equipo" class="nav-link">
+                            <i class="nav-icon bi bi-circle"></i>
+                            <p>Registrar un eqiupo</p>
+                          </a>
+                        </li>
+                        <li class="nav-item">
+                          <a href="'.site_url().'form-load-equipos" class="nav-link">
+                            <i class="nav-icon bi bi-circle"></i>
+                            <p>Cargar equipos</p>
+                          </a>
+                        </li>
+                      ';
+                    }
+                  ?>
                 </ul>
               </li>
+              <!-- JUGADORES -->
               <li class="nav-item">
                 <a href="#" class="nav-link">
                   <i class="nav-icon bi bi-person-vcard"></i>
@@ -162,14 +179,21 @@
                       <p>Lista de jugadores</p>
                     </a>
                   </li>
-                  <li class="nav-item">
-                    <a href="<?= site_url(); ?>form-nuevo-jugador" class="nav-link">
-                      <i class="nav-icon bi bi-circle"></i>
-                      <p>Registrar un jugador</p>
-                    </a>
-                  </li>
+                  <?php
+                    if ($user && $user['idrol'] == 1 && $permisos['jugador']) {
+                      echo '
+                        <li class="nav-item">
+                          <a href="'.site_url().'form-nuevo-jugador" class="nav-link">
+                            <i class="nav-icon bi bi-circle"></i>
+                            <p>Registrar un jugador</p>
+                          </a>
+                        </li>
+                      ';
+                    }
+                  ?>
                 </ul>
               </li>
+              <!-- ARBITROS -->
               <li class="nav-item">
                 <a href="#" class="nav-link">
                   <i class="nav-icon bi bi-people"></i>
@@ -185,43 +209,56 @@
                       <p>Lista de Arbitros</p>
                     </a>
                   </li>
-                  <li class="nav-item">
-                    <a href="<?= site_url(); ?>form-nuevo-arbitro" class="nav-link">
-                      <i class="nav-icon bi bi-circle"></i>
-                      <p>Registrar un árbitro</p>
-                    </a>
-                  </li>
-                  <li class="nav-item">
-                    <a href="<?= site_url(); ?>form-califica-arbitro" class="nav-link">
-                      <i class="nav-icon bi bi-circle"></i>
-                      <p>Calificar árbitro</p>
-                    </a>
-                  </li>
-                  <li class="nav-item">
-                    <a href="<?= site_url(); ?>form-load-arbitros" class="nav-link">
-                      <i class="nav-icon bi bi-circle"></i>
-                      <p>Cargar lista de árbitros</p>
-                    </a>
-                  </li>
+                  <?php
+                    if ($user && $user['idrol'] == 1 && $permisos['arbitraje']) {
+                      echo '
+                        <li class="nav-item">
+                          <a href="'.site_url().'form-nuevo-arbitro" class="nav-link">
+                            <i class="nav-icon bi bi-circle"></i>
+                            <p>Registrar un árbitro</p>
+                          </a>
+                        </li>
+                        <li class="nav-item">
+                          <a href="'.site_url().'form-califica-arbitro" class="nav-link">
+                            <i class="nav-icon bi bi-circle"></i>
+                            <p>Calificar árbitro</p>
+                          </a>
+                        </li>
+                        <li class="nav-item">
+                          <a href="'.site_url().'form-load-arbitros" class="nav-link">
+                            <i class="nav-icon bi bi-circle"></i>
+                            <p>Cargar lista de árbitros</p>
+                          </a>
+                        </li>
+                      ';
+                    }
+                  ?>
                 </ul>
               </li>
-              <li class="nav-item">
-                <a href="#" class="nav-link">
-                  <i class="nav-icon bi bi-list"></i>
-                  <p>
-                    Reportes
-                    <i class="nav-arrow bi bi-chevron-right"></i>
-                  </p>
-                </a>
-                <ul class="nav nav-treeview">
-                  <li class="nav-item">
-                    <a href="<?= site_url(); ?>vocalias" class="nav-link">
-                      <i class="nav-icon bi bi-circle"></i>
-                      <p>Informes de vocalía</p>
-                    </a>
-                  </li>
-                </ul>
-              </li>
+              <!-- REPORTES -->
+              <?php
+                if ($user && $user['idrol'] == 1 && $permisos['informes']) {
+                  echo '
+                    <li class="nav-item">
+                      <a href="#" class="nav-link">
+                        <i class="nav-icon bi bi-list"></i>
+                        <p>
+                          Reportes
+                          <i class="nav-arrow bi bi-chevron-right"></i>
+                        </p>
+                      </a>
+                      <ul class="nav nav-treeview">
+                        <li class="nav-item">
+                          <a href="'.site_url().'vocalias" class="nav-link">
+                            <i class="nav-icon bi bi-circle"></i>
+                            <p>Informes de vocalía</p>
+                          </a>
+                        </li>
+                      </ul>
+                    </li>
+                  ';
+                }
+              ?>
             </ul>
             <!--end::Sidebar Menu-->
           </nav>

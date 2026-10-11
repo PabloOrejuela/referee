@@ -105,7 +105,7 @@
                       class="user-image rounded-circle shadow"
                       alt="User Image"
                     />
-                    <span class="d-none d-md-inline">'.$session->user['nombre'].' '.$session->user['apellido'].'</span>
+                    <span class="d-none d-md-inline">'.$user['nombre'].' '.$user['apellido'].'</span>
                   </a>
                   <ul class="dropdown-menu dropdown-menu-lg dropdown-menu-end">
       
@@ -135,7 +135,7 @@
                   <!--end::Menu Body-->
                   <!--begin::Menu Footer-->
                     <li class="user-footer">
-                      <a href="'.site_url().'form-edit-usuario/'.$session->user['id'].'" class="btn btn-outline-secondary">Profile</a>
+                      <a href="'.site_url().'form-edit-usuario/'.$user['id'].'" class="btn btn-outline-secondary">Profile</a>
                       <a href="'.site_url().'logout" class="btn btn-outline-danger float-end">Cerrar sesión</a>
                     </li>
                     <!--end::Menu Footer-->
@@ -157,9 +157,6 @@
               }
           ?>
             
-            
-           
-          
       </ul>
       <!--end::End Navbar Links-->
     </div>
