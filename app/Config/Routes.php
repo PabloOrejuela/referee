@@ -25,14 +25,21 @@ $routes->get('campeonatos/provincia/(:num)', 'Campeonatos::getLigasByProvincia/$
 
 // Equipos (requiere permiso 'equipo')
 $routes->get('equipos', 'Equipos::equipos');
+$routes->get('form-edit-equipo/(:num)', 'Equipos::formEditEquipo/$1', ['filter' => 'auth:equipo']);
 $routes->get('form-load-equipos', 'Equipos::formLoadEquiposData', ['filter' => 'auth:equipo']);
+$routes->get('form-nuevo-equipo', 'Equipos::formNewEquipo', ['filter' => 'auth:equipo']);
+$routes->post('insert-equipo', 'Equipos::insertEquipo', ['filter' => 'auth:equipo']);
 $routes->post('load-equipos', 'Equipos::loadEquiposData', ['filter' => 'auth:equipo']);
+$routes->post('update-equipo/(:num)', 'Equipos::updateEquipo/$1', ['filter' => 'auth:equipo']);
 
 //Jugadores
-
+$routes->get('form-load-jugadores', 'Jugadores::formLoadJugadoresData', ['filter' => 'auth:jugador']);
+$routes->get('jugadores/campeonatos/(:num)', 'Jugadores::getCampeonatosByLiga/$1', ['filter' => 'auth:jugador']);
+$routes->get('jugadores/equipos/(:num)', 'Jugadores::getEquiposByCampeonato/$1', ['filter' => 'auth:jugador']);
 $routes->get('form-nuevo-jugador', 'Jugadores::formNuevoJugador', ['filter' => 'auth:jugador']);
 $routes->get('form-edit-jugador/(:num)', 'Jugadores::formEditJugador/$1', ['filter' => 'auth:jugador']);
 $routes->get('jugadores', 'Jugadores::index');
+$routes->post('load-jugadores', 'Jugadores::loadJugadoresData', ['filter' => 'auth:jugador']);
 $routes->post('update-jugador', 'Jugadores::updateJugador', ['filter' => 'auth:jugador']);
 
 //Ligas
@@ -41,9 +48,6 @@ $routes->get('ligas/provincia/(:num)', 'Ligas::getLigasByProvincia/$1');
 $routes->get('form-nueva-liga', 'Ligas::formNuevaLiga', ['filter' => 'auth:liga']);
 $routes->post('insert-liga', 'Ligas::insertLiga', ['filter' => 'auth:liga']);
 
-// Arbitros (requiere permiso 'arbitraje')
-$routes->get('arbitros', 'Arbitros::index', ['filter' => 'auth:arbitraje']);
-
 // Reportes (requiere permiso 'informes')
 $routes->get('reportes', 'Reportes::index', ['filter' => 'auth:informes']);
 
@@ -51,6 +55,9 @@ $routes->get('reportes', 'Reportes::index', ['filter' => 'auth:informes']);
 $routes->get('campeonatos', 'Campeonatos::index');
 
 //Usuarios
+$routes->get('usuarios', 'Usuarios::index', ['filter' => 'auth:*']);
+$routes->post('insert-usuario', 'Usuarios::insertUsuario', ['filter' => 'auth:*']);
 $routes->get('form-nuevo-usuario', 'Usuarios::formNuevoUsuario', ['filter' => 'auth:*']);
 $routes->get('form-edit-usuario/(:num)', 'Usuarios::formEditUsuario/$1', ['filter' => 'auth:*']);
+$routes->post('update-usuario', 'Usuarios::updateUsuario', ['filter' => 'auth:*']);
 

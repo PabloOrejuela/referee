@@ -304,4 +304,176 @@ class Equipos extends BaseController {
         }
         return true;
     }
+
+    public function formNewEquipo(){
+
+        //$data['provincias'] = $this->provinciaModel->findAll();
+        
+        $data['title'] = 'Equipos';
+        $data['main_content'] = 'equipos/form_new_equipo';
+        return view('dashboard/index', $data);
+    }
+
+    public function insertEquipo(){
+        $this->validation->setRuleGroup('formEquipo');
+
+        if (!$this->validation->withRequest($this->request)->run()) {
+            return redirect()->back()
+                ->withInput()
+                ->with('errors', $this->validation->getErrors());
+        }
+
+        $equipo = [
+            'nombre' => strtoupper($this->request->getPost('nombre')),
+            'siglas' => strtoupper($this->request->getPost('siglas')),
+            'descripcion' => $this->request->getPost('descripcion'),
+            'fecha_fundacion' => $this->request->getPost('fecha_fundacion'),
+        ];
+
+        $nombreImagen = null;
+        $imagen = $this->request->getFile('imagen');
+        if ($imagen && $imagen->getError() !== UPLOAD_ERR_NO_FILE) {
+            $tiposPermitidos = ['image/jpeg', 'image/png', 'image/webp'];
+
+            if (!$imagen->isValid() || $imagen->hasMoved()) {
+                return redirect()->back()
+                    ->withInput()
+                    ->with('errors', ['imagen' => 'No se pudo recibir la imagen.']);
+            }
+
+            if (!in_array($imagen->getMimeType(), $tiposPermitidos, true) || $imagen->getSizeByUnit('mb') > 2) {
+                return redirect()->back()
+                    ->withInput()
+                    ->with('errors', ['imagen' => 'La imagen debe ser JPG, PNG o WEBP y pesar como máximo 2 MB.']);
+            }
+
+            $nombreImagen = uploadAndOptimizeImage(
+                $imagen,
+                FCPATH . 'public/img/equipos',
+                800,
+                80
+            );
+
+            if (!$nombreImagen) {
+                return redirect()->back()
+                    ->withInput()
+                    ->with('errors', ['imagen' => 'No se pudo procesar la imagen.']);
+            }
+
+            $equipo['imagen'] = $nombreImagen;
+        }
+
+        if ($this->equipoModel->insert($equipo)) {
+            return redirect()->to('equipos')
+                ->with('mensaje', 'El equipo se registró correctamente.');
+        }
+
+        if ($nombreImagen) {
+            $rutaImagen = FCPATH . 'public/img/equipos' . DIRECTORY_SEPARATOR . basename($nombreImagen);
+            if (is_file($rutaImagen)) {
+                @unlink($rutaImagen);
+            }
+        }
+
+        return redirect()->back()
+            ->withInput()
+            ->with('mensaje', 'Hubo un error. No se ha podido registrar el equipo.');
+    }
+
+    public function formEditEquipo($id){
+
+        $data['equipo'] = $this->equipoModel->where('id', $id)->first();
+        //$data['provincias'] = $this->provinciaModel->findAll();
+        
+        $data['title'] = 'Equipos';
+        $data['main_content'] = 'equipos/form_edit_equipo';
+        return view('dashboard/index', $data);
+    }
+
+    public function updateEquipo($id){
+
+        $this->validation->setRuleGroup('formEquipo');
+
+        if (!$this->validation->withRequest($this->request)->run()) {
+            return redirect()->back()
+                ->withInput()
+                ->with('errors', $this->validation->getErrors());
+        }
+
+        $equipoActual = $this->equipoModel->find($id);
+        if (!$equipoActual) {
+            return redirect()->to('equipos')
+                ->with('mensaje', 'No se encontró el equipo que se desea actualizar.');
+        }
+
+        // Los nombres corresponden a los campos permitidos por EquipoModel.
+        $equipo = [
+            'nombre' => strtoupper($this->request->getPost('nombre')),
+            'siglas' => strtoupper($this->request->getPost('siglas')),
+            'descripcion' => $this->request->getPost('descripcion'),
+            'fecha_fundacion' => $this->request->getPost('fecha_fundacion'),
+        ];
+
+        // La imagen es opcional al editar; se conserva la actual si no llega un archivo nuevo.
+        $nombreImagenNueva = null;
+        $imagen = $this->request->getFile('imagen');
+        if ($imagen && $imagen->getError() !== UPLOAD_ERR_NO_FILE) {
+            $tiposPermitidos = ['image/jpeg', 'image/png', 'image/webp'];
+
+            if (!$imagen->isValid() || $imagen->hasMoved()) {
+                return redirect()->back()
+                    ->withInput()
+                    ->with('errors', ['imagen' => 'No se pudo recibir la imagen.']);
+            }
+
+            if (!in_array($imagen->getMimeType(), $tiposPermitidos, true) || $imagen->getSizeByUnit('mb') > 2) {
+                return redirect()->back()
+                    ->withInput()
+                    ->with('errors', ['imagen' => 'La imagen debe ser JPG, PNG o WEBP y pesar como máximo 2 MB.']);
+            }
+
+            $nombreImagen = uploadAndOptimizeImage(
+                $imagen,
+                FCPATH . 'public/img/equipos',
+                800,
+                80
+            );
+
+            if (!$nombreImagen) {
+                return redirect()->back()
+                    ->withInput()
+                    ->with('errors', ['imagen' => 'No se pudo procesar la imagen.']);
+            }
+
+            $nombreImagenNueva = $nombreImagen;
+            $equipo['imagen'] = $nombreImagen;
+        }
+
+        $res = $this->equipoModel->update($id, $equipo);
+
+        if ($res) {
+            // Borra la imagen anterior solo después de confirmar el cambio en la base de datos.
+            $nombreImagenAnterior = $equipoActual->imagen ?? null;
+            if ($nombreImagenNueva && $nombreImagenAnterior && $nombreImagenAnterior !== $nombreImagenNueva) {
+                $directorioImagenes = FCPATH . 'public/img/equipos' . DIRECTORY_SEPARATOR;
+                $rutaImagenAnterior = $directorioImagenes . basename($nombreImagenAnterior);
+
+                if (is_file($rutaImagenAnterior)) {
+                    @unlink($rutaImagenAnterior);
+                }
+            }
+
+            return redirect()->to('equipos');
+        }
+
+        // Si falló el update, elimina el archivo nuevo para no dejarlo huérfano.
+        if ($nombreImagenNueva) {
+            $rutaImagenNueva = FCPATH . 'public/img/equipos' . DIRECTORY_SEPARATOR . basename($nombreImagenNueva);
+            if (is_file($rutaImagenNueva)) {
+                @unlink($rutaImagenNueva);
+            }
+        }
+
+        return redirect()->back()->with('mensaje', 'Hubo un error. No se ha podido actualizar la información');
+    }
 }

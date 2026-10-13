@@ -12,8 +12,7 @@ class UsersSeeder extends Seeder
 
         $data = [
             [
-                'nombre'      => 'Juan',
-                'apellido'      => 'Pérez',
+                'nombre'      => 'Juan Pérez',
                 'usuario'     => 'jperez',
                 'password'    => password_hash('password123', PASSWORD_BCRYPT),
                 'documento'   => '1234567890',
@@ -30,8 +29,7 @@ class UsersSeeder extends Seeder
                 'updated_at'  => $now,
             ],
             [
-                'nombre'      => 'María',
-                'apellido'    => 'López',
+                'nombre'      => 'María López',
                 'usuario'     => 'mlopez',
                 'password'    => password_hash('password123', PASSWORD_BCRYPT),
                 'documento'   => '2345678901',
@@ -48,8 +46,7 @@ class UsersSeeder extends Seeder
                 'updated_at'  => $now,
             ],
             [
-                'nombre'      => 'Carlos',
-                'apellido'    => 'Ramírez',
+                'nombre'      => 'Carlos Ramírez',
                 'usuario'     => 'cramirez',
                 'password'    => password_hash('password123', PASSWORD_BCRYPT),
                 'documento'   => '3456789012',
@@ -66,8 +63,7 @@ class UsersSeeder extends Seeder
                 'updated_at'  => $now,
             ],
             [
-                'nombre'      => 'Ana',
-                'apellido'    => 'González',
+                'nombre'      => 'Ana González',
                 'usuario'     => 'agonzalez',
                 'password'    => password_hash('password123', PASSWORD_BCRYPT),
                 'documento'   => '4567890123',
@@ -84,8 +80,7 @@ class UsersSeeder extends Seeder
                 'updated_at'  => $now,
             ],
             [
-                'nombre'      => 'Pedro',
-                'apellido'    => 'Martínez',
+                'nombre'      => 'Pedro Martínez',
                 'usuario'     => 'pmartinez',
                 'password'    => password_hash('password123', PASSWORD_BCRYPT),
                 'documento'   => '5678901234',

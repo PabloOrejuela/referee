@@ -29,12 +29,12 @@
                                     if (isset($usuarios) && $usuarios != NULL) {
                                         foreach ($usuarios as $key => $usuario) {
                                             echo '<tr>
-                                                <td><a href="'.site_url().'cliente-edit/'.$usuario->id.'" id="link-editar">'.$usuario->nombre.' '.$usuario->apellido.'</a></td>
+                                                <td><a href="'.site_url().'form-edit-usuario/'.$usuario->id.'" id="link-editar">'.$usuario->nombre.'</a></td>
                                                 <td>'.$usuario->documento.'</td>
                                                 <td>'.$usuario->telf_1.'</td>
                                                 <td>'.$usuario->direccion.'</td>
                                                 <td>'.$usuario->email.'</td>
-                                                <td>'.$usuario->idrol.'</td>';
+                                                <td>'.$usuario->rol.'</td>';
                                                 if ($usuario->estado == 1) {
                                                     echo '<td>Activo</td>';
                                                 }else if($usuario->estado == 0){
@@ -47,13 +47,13 @@
                                                     </a>
                                                 </div>
                                             </td>
-                                            <td>
-                                                <div class="contenedor">
-                                                    <a type="button" id="btn-register" href="'.site_url().'cliente-delete/'.$usuario->id.'" class="btnAction">
-                                                        <img src="'.site_url().'public/img/delete.png" width="30" >
-                                                    </a>
-                                                </div>
-                                            </td>
+                                            <td>';
+                                                // <div class="contenedor">
+                                                //     <a type="button" id="btn-register" href="'.site_url().'cliente-delete/'.$usuario->id.'" class="btnAction">
+                                                //         <img src="'.site_url().'public/img/delete.png" width="30" >
+                                                //     </a>
+                                                // </div>
+                                            echo '</td>
                                             </tr>';
                                     }
                                     }

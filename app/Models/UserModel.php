@@ -4,8 +4,8 @@ namespace App\Models;
 
 use CodeIgniter\Model;
 
-class UserModel extends Model
-{
+class UserModel extends Model {
+
     protected $table            = 'users';
     protected $primaryKey       = 'id';
     protected $useAutoIncrement = true;
@@ -14,14 +14,13 @@ class UserModel extends Model
     protected $protectFields    = true;
     protected $allowedFields    = [
         'nombre',
-        'apellido',
         'usuario',
         'password',
         'documento',
         'direccion',
         'email',
         'telf_1',
-        'telf_1',
+        'telf_2',
         'imagen',
         'fecha_nac',
         'idrol',

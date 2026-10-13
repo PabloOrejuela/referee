@@ -7,6 +7,8 @@ use CodeIgniter\HTTP\ResponseInterface;
 
 use App\Models\EquipoModel;
 use App\Models\JugadorModel;
+use App\Models\LigaModel;
+use App\Models\CampeonatoModel;
 use App\Models\ProvinciaModel;
 use App\Models\RolModel;
 use App\Models\TemporadaModel;
@@ -15,6 +17,8 @@ class Jugadores extends BaseController {
 
     protected $equipoModel;
     protected $jugadorModel;
+    protected $ligaModel;
+    protected $campeonatoModel;
     protected $provinciaModel;
     protected $rolModel;
     protected $temporadaModel;
@@ -26,6 +30,8 @@ class Jugadores extends BaseController {
         // Instancias los modelos
         $this->equipoModel = model(EquipoModel::class);
         $this->jugadorModel = model(JugadorModel::class);
+        $this->ligaModel = model(LigaModel::class);
+        $this->campeonatoModel = model(CampeonatoModel::class);
         $this->provinciaModel = model(ProvinciaModel::class);
         $this->rolModel = model(RolModel::class);
         $this->temporadaModel = model(TemporadaModel::class);
@@ -48,6 +54,48 @@ class Jugadores extends BaseController {
         $data['title'] = 'Jugadores';
         $data['main_content'] = 'jugadores/grid_jugadores';
         return view('dashboard/index', $data);
+    }
+
+    public function formLoadJugadoresData() {
+        $data['ligas'] = $this->ligaModel
+            ->select('id, nombre_liga')
+            ->orderBy('nombre_liga', 'ASC')
+            ->findAll();
+
+        $data['title'] = 'Jugadores';
+        $data['subtitle']='Importar lista de jugadores';
+        $data['main_content'] = 'jugadores/form_load_jugadores';
+        return view('dashboard/index', $data);
+    }
+
+    public function getCampeonatosByLiga($idliga = null) {
+        if (empty($idliga) || !ctype_digit((string) $idliga)) {
+            return $this->response->setJSON([]);
+        }
+
+        $campeonatos = $this->campeonatoModel
+            ->select('id, campeonato')
+            ->where('idliga', $idliga)
+            ->orderBy('campeonato', 'ASC')
+            ->findAll();
+
+        return $this->response->setJSON($campeonatos);
+    }
+
+    public function getEquiposByCampeonato($idcampeonato = null) {
+        if (empty($idcampeonato) || !ctype_digit((string) $idcampeonato)) {
+            return $this->response->setJSON([]);
+        }
+
+        $equipos = $this->equipoModel
+            ->select('equipos.id, equipos.nombre')
+            ->join('equipo_campeonatos', 'equipo_campeonatos.idequipo = equipos.id')
+            ->where('equipo_campeonatos.idcampeonato', $idcampeonato)
+            ->distinct()
+            ->orderBy('equipos.nombre', 'ASC')
+            ->findAll();
+
+        return $this->response->setJSON($equipos);
     }
 
     public function formNuevoJugador(){

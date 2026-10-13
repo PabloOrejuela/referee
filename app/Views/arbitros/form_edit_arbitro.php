@@ -39,6 +39,7 @@
                                                 <div class="col-md-6">
                                                     <label for="nombre" class="form-label">Nombre completo</label>
                                                     <input type="text" class="form-control" id="nombre" name="nombre" value="'.$arbitro->nombre.'" placeholder="Ingrese nombre completo" required>
+                                                    <p id="error-message">'.session('errors.nombre').'</p>
                                                 </div>
 
                                                 <div class="col-md-6">
@@ -68,14 +69,14 @@
                                                         <option value="1"'.((old('estado') ?: $arbitro->estado) === '1' ? ' selected' : '').'>Activo</option>
                                                         <option value="0"'.((old('estado') ?: $arbitro->estado) === '0' ? ' selected' : '').'>Inactivo</option>
                                                     </select>
-                                                </div>
-                                                <div class="col-12 mt-4">
+                                                </div>';
+                                                echo form_hidden('id', $arbitro->id);
+                                                echo '<div class="col-12 mt-4">
                                                     <button type="submit" class="btn btn-primary">Guardar</button>
                                                     <a href="'.site_url().'arbitros" class="btn btn-secondary ms-2">Cancelar</a>
                                                 </div>
                                             </div>
                                         ';
-                                        echo form_hidden('id', $arbitro->id);
                                     }
                                 ?>
                             </form>

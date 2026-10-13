@@ -27,7 +27,7 @@
                         </div>
                         <div class="card-body">
 
-                            <form action="<?= site_url('jugadores/guardar') ?>" method="post" enctype="multipart/form-data">
+                            <form action="<?= site_url('insert-usuario') ?>" method="post">
                                 <?= csrf_field() ?>
                                 <div class="row gy-3">
                                     <div class="col-12">
@@ -46,7 +46,7 @@
 
                                     <div class="col-md-6">
                                         <label for="password" class="form-label">Contraseña</label>
-                                        <input type="password" class="form-control" id="password" name="password" placeholder="Ingrese una contraseña" required>
+                                        <input type="password" class="form-control" id="password" name="password" value="<?= old('password') ?>" placeholder="Ingrese una contraseña" required>
                                     </div>
 
                                     <div class="col-md-6">
@@ -81,37 +81,33 @@
                                             <?php
                                             if (isset($roles)) {
                                                 foreach ($roles as $key => $rol) {
-                                                    echo '<option value="' . $rol->id . '">' . $rol->rol . '</option>';
+                                                    $selected = (string) old('idrol') === (string) $rol->id ? ' selected' : '';
+                                                    echo '<option value="' . esc($rol->id) . '"' . $selected . '>' . esc($rol->rol) . '</option>';
                                                 }
                                             }
                                             ?>
                                         </select>
                                     </div>
-
+                                    
                                     <div class="col-md-4">
                                         <label for="estado" class="form-label">Estado</label>
                                         <select id="estado" name="estado" class="form-select">
-                                            <option value="activo" <?= old('estado') === 'activo' ? 'selected' : '' ?>>Activo</option>
-                                            <option value="inactivo" <?= old('estado') === 'inactivo' ? 'selected' : '' ?>>Inactivo</option>
+                                            <?php 
+                                                if (old('estado') == 1) {
+                                                    echo '<option value="1" selected>Activo</option>';
+                                                    echo '<option value="2" >Inactivo</option>';
+                                                }else{
+                                                    echo '<option value="1">Activo</option>';
+                                                    echo '<option value="2" selected>Inactivo</option>';
+                                                }
+                                                
+                                            ?>
                                         </select>
                                     </div>
-
-                                    <div class="col-md-6">
-                                        <label for="imagen" class="form-label">Foto / imagen</label>
-                                        <input class="form-control" type="file" id="imagen" name="imagen" accept="image/*">
-                                    </div>
-
-                                    <div class="col-md-6 d-flex align-items-end">
-                                        <div class="form-check">
-                                            <input class="form-check-input" type="checkbox" id="is_logged" name="is_logged" value="1" <?= old('is_logged') ? 'checked' : '' ?>>
-                                            <label class="form-check-label" for="is_logged">Mantener sesión activa</label>
-                                        </div>
-                                    </div>
-
-
+                                    
                                     <div class="col-12 mt-4">
                                         <button type="submit" class="btn btn-primary">Guardar</button>
-                                        <a href="<?= site_url() ?>" class="btn btn-secondary ms-2">Cancelar</a>
+                                        <a href="<?= site_url() ?>usuarios" class="btn btn-secondary ms-2">Cancelar</a>
                                     </div>
                                 </div>
                             </form>

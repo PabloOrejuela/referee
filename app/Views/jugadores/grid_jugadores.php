@@ -20,6 +20,7 @@
                                 <th>Documento</th>
                                 <th>Equipo</th>
                                 <th>Posición</th>
+                                <th>Estadísticas</th>
                                 <th></th>
                             </thead>
                             <tbody>
@@ -33,6 +34,7 @@
                                                 <td>'.$jugador->documento.'</td>
                                                 <td>'.$jugador->equipo.'</td>
                                                 <td>'.$jugador->posicion.'</td>
+                                                <td>Estadisticas</td>
                                             ';
 
                                             echo '<td>

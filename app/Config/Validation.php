@@ -73,4 +73,38 @@ class Validation extends BaseConfig
         //     'required' => 'El campo "documento" es obligatorio',
         // ],
     ];
+
+    public $formEquipo = [
+        'nombre'   => 'required|alpha_space',
+        'siglas'   => 'required|alpha_space',
+        //'documento'   => 'required',
+        
+    ]; 
+
+    public $formEquipo_errors = [
+        'nombre' => [
+            'required' => 'El campo "Nombre" es obligatorio',
+            'alpha_space' => 'El campo "Nombre" solo puede contener letras no simbolos ni números',
+        ],
+        'siglas' => [
+            'required' => 'El campo "Siglas" es obligatorio',
+            'alpha_space' => 'El campo "Siglas" solo puede contener letras no simbolos ni números',
+        ],
+    ];
+
+    public $formUsuario = [
+        'nombre'   => 'required|alpha_space',
+        'idrol'   => 'required|numeric',
+        'estado'   => 'required|numeric',
+    ]; 
+
+    public $formUsuario_errors = [
+        'nombre' => [
+            'required' => 'El campo field es obligatorio',
+            'alpha_space' => 'El campo field solo puede contener letras no simbolos ni números',
+        ],
+        // 'documento' => [
+        //     'required' => 'El campo "documento" es obligatorio',
+        // ],
+    ];
 }

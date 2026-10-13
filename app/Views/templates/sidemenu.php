@@ -188,6 +188,12 @@
                             <p>Registrar un jugador</p>
                           </a>
                         </li>
+                        <li class="nav-item">
+                          <a href="'.site_url().'form-load-jugadores" class="nav-link">
+                            <i class="nav-icon bi bi-circle"></i>
+                            <p>Cargar lista de Jugadores</p>
+                          </a>
+                        </li>
                       ';
                     }
                   ?>

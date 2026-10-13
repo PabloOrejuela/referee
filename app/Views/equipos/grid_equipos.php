@@ -18,10 +18,10 @@
                                 <th>Equipo</th>
                                 <th>Descripción</th>
                                 <th>Fundación</th>
+                                <th>Alineación</th>
                                 <th>Técnico</th>
                                 <th>Presidente</th>
-                                <th></th>
-                                <th></th>
+                                <th>Estadísticas</th>
                             </thead>
                             <tbody>
                                 <?php
@@ -29,28 +29,29 @@
                                         foreach ($equipos as $key => $equipo) {
                                             echo '<tr>
                                                 <td><img src="'.site_url().'public/img/equipos/'.$equipo->imagen.'" alt="logo" id="logo-thumb"></td>
-                                                <td><a href="'.site_url().'cliente-edit/'.$equipo->id.'" id="link-editar">'.$equipo->nombre.'</a></td>
+                                                <td><a href="'.site_url().'form-edit-equipo/'.$equipo->id.'" id="link-editar">'.$equipo->nombre.'</a></td>
                                                 <td>'.$equipo->descripcion.'</td>
                                                 <td>'.$equipo->fecha_fundacion.'</td>
+                                                <td>Alineación</td>
                                                 <td>Técnico</td>
                                                 <td>'.$equipo->presidente.'</td>
                                             ';
 
                                             echo '<td>
                                                 <div class="contenedor">
-                                                    <a type="button" id="btn-register" href="'.site_url().'print-client-historial/'.$equipo->id.'" class="btnAction">
+                                                    <a type="button" id="btn-register" href="'.site_url().'print-equipo-historial/'.$equipo->id.'" class="btnAction">
                                                         <img src="'.site_url().'public/img/btn-print.png" width="30" >
                                                     </a>
                                                 </div>
-                                            </td>
-                                            <td>
-                                                <div class="contenedor">
-                                                    <a type="button" id="btn-register" href="#" class="btnAction">
-                                                        <img src="'.site_url().'public/img/delete.png" width="30" >
-                                                    </a>
-                                                </div>
-                                            </td>
-                                            </tr>';
+                                            </td>';
+                                            // <td>
+                                            //     <div class="contenedor">
+                                            //         <a type="button" id="btn-register" href="#" class="btnAction">
+                                            //             <img src="'.site_url().'public/img/delete.png" width="30" >
+                                            //         </a>
+                                            //     </div>
+                                            // </td>
+                                            echo '</tr>';
                                     }
                                     }
                                 ?>
